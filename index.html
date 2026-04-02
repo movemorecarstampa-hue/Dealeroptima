@@ -49,10 +49,10 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
 .nlinks{display:flex;gap:24px;align-items:center}
 .nlinks a{color:var(–t3);text-decoration:none;font-size:13px;font-weight:500}
 .nlinks a:hover{color:var(–t1)}
-.btn{background:var(–accent);color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;display:inline-block;border:none;cursor:pointer}
-@media(prefers-color-scheme:dark){.btn{color:#0B1421}}
+.btn{background:#008F7A;background:var(–accent);color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;display:inline-block;border:none;cursor:pointer}
+@media(prefers-color-scheme:dark){.btn{background:#00E8C6;color:#0B1421}}
 .btn:hover{opacity:.9}
-.btn-o{border:1.5px solid var(–border);color:var(–t1);padding:9px 24px;border-radius:8px;font-weight:600;font-size:13px;text-decoration:none;background:transparent}
+.btn-o{border:1.5px solid #D0D5DB;border-color:var(–border);color:#111;color:var(–t1);padding:9px 24px;border-radius:8px;font-weight:600;font-size:13px;text-decoration:none;background:transparent}
 .btn-o:hover{border-color:var(–accent);color:var(–accent)}
 @media(max-width:768px){.nlinks span{display:none}.w{padding:0 20px}}
 @media(max-width:500px){.hero-ctas{flex-direction:column}.hero-ctas a{text-align:center}}
@@ -169,6 +169,70 @@ footer{border-top:1px solid var(–border);padding:36px 0 28px;background:var(�
 .brief-kpi-row{flex-direction:column}
 .price-grid{grid-template-columns:1fr 1fr !important}
 }
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes subtleGlow{0%,100%{box-shadow:0 0 20px rgba(0,143,122,0.08)}50%{box-shadow:0 0 40px rgba(0,143,122,0.15)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+
+/* Hero entrance */
+.hero-enter{animation:fadeUp .8s ease-out both}
+.hero-enter-d1{animation-delay:.1s}
+.hero-enter-d2{animation-delay:.25s}
+.hero-enter-d3{animation-delay:.4s}
+.hero-enter-d4{animation-delay:.55s}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
+.reveal-d4{transition-delay:.4s}
+.reveal-d5{transition-delay:.5s}
+
+/* Card hover lifts */
+.dept{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.dept:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:var(–accent)}
+.tmod{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.tmod:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:var(–accent)}
+.step{transition:transform .25s ease,box-shadow .25s ease}
+.step:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.pr{transition:transform .25s ease,box-shadow .25s ease}
+.pr:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.08)}
+.conn{transition:transform .25s ease,background .25s ease}
+.conn:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}
+
+/* Button transitions */
+.btn{transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,143,122,.25);opacity:1}
+.btn-o{transition:all .2s ease}
+.btn-o:hover{transform:translateY(-1px)}
+
+/* Briefing mockup glow */
+.brief-mock{animation:subtleGlow 4s ease-in-out infinite;transition:transform .3s ease}
+.brief-mock:hover{transform:scale(1.01)}
+
+/* Proof strip subtle entrance */
+.proof{transition:all .3s ease}
+.proof:hover{box-shadow:0 4px 16px rgba(0,0,0,.04)}
+
+/* Total box pulse */
+.dept-total{transition:transform .3s ease}
+.dept-total:hover{transform:scale(1.01)}
+
+/* Brand tags */
+.brand{transition:all .2s ease}
+.brand:hover{background:var(–accent-bg);border-color:var(–accent);color:var(–accent)}
+
+/* Founder quotes slide-in */
+.fq{transition:all .3s ease}
+.fq:hover{padding-left:24px}
+
+/* Nav subtle shadow on scroll */
+nav{transition:box-shadow .3s ease}
+nav.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.06)}
 </style>
 
 </head>
@@ -186,26 +250,26 @@ footer{border-top:1px solid var(–border);padding:36px 0 28px;background:var(�
 <!-- HERO -->
 
 <section style="padding:72px 0 56px;border-bottom:1px solid var(--border)"><div class="w">
-<div style="font-family:monospace;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:20px">THE AI-NATIVE OPERATING SYSTEM FOR DEALERSHIPS</div>
-<h1 style="font-family:Syne,sans-serif;font-size:clamp(30px,5.5vw,54px);font-weight:800;line-height:1.06;letter-spacing:-2px;margin-bottom:18px;max-width:700px;color:var(--t1)">Your dealership is leaking <span style="color:var(--accent)">$600K+ every month.</span><br><span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400">You just can't see it yet.</span></h1>
-<p style="font-size:17px;color:var(--t2);line-height:1.7;max-width:540px;margin-bottom:28px">It's not one big problem. It's <strong style="color:var(--t1)">dozens of small ones</strong> across every department — sales, F&I, service, parts, BDC, marketing, inventory. No single tool sees them all. <strong style="color:var(--t1)">CoreAI does.</strong></p>
-<div class="hero-ctas" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px"><a href="#cta" class="btn" style="font-size:16px;padding:15px 36px">See What You're Missing →</a><a href="#money" class="btn-o">Show Me the Math</a></div>
+<div style="font-family:monospace;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:20px" class="hero-enter hero-enter-d1">THE AI-NATIVE OPERATING SYSTEM FOR DEALERSHIPS</div>
+<h1 style="font-family:Syne,sans-serif;font-size:clamp(30px,5.5vw,54px);font-weight:800;line-height:1.06;letter-spacing:-2px;margin-bottom:18px;max-width:700px;color:var(--t1)" class="hero-enter hero-enter-d2">Your dealership is leaking <span style="color:var(--accent)">$600K+ every month.</span><br><span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400">You just can't see it yet.</span></h1>
+<p style="font-size:17px;color:var(--t2);line-height:1.7;max-width:540px;margin-bottom:28px" class="hero-enter hero-enter-d3">It's not one big problem. It's <strong style="color:var(--t1)">dozens of small ones</strong> across every department — sales, F&I, service, parts, BDC, marketing, inventory. No single tool sees them all. <strong style="color:var(--t1)">CoreAI does.</strong></p>
+<div class="hero-ctas hero-enter hero-enter-d4" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px"><a href="#cta" class="btn" style="font-size:16px;padding:15px 36px;background:#008F7A;color:#fff">See What You're Missing →</a><a href="#money" class="btn-o" style="border:1.5px solid #D0D5DB">Show Me the Math</a></div>
 <div class="proof"><strong>140+ KPIs</strong><span class="proof-sep">|</span><strong>32+ Cross-Dept Connections</strong><span class="proof-sep">|</span><strong>22 Dollar Formulas</strong><span class="proof-sep">|</span><strong>14 Domains</strong><span class="proof-sep">|</span><strong>50-State Compliance</strong></div>
 </div></section>
 
 <!-- MATH -->
 
 <section class="sec" id="money"><div class="w">
-<div class="sl">LET'S DO THE MATH</div>
+<div class="sl reveal">LET'S DO THE MATH</div>
 <h2>Here's Where Your Money Is Going</h2>
 <p class="sp">Department by department for a <strong>130-unit store.</strong> Do this against your own numbers — the math still works.</p>
 <div style="display:grid;gap:14px;margin-top:40px">
-<div class="dept"><div style="flex:1;min-width:200px"><div class="dept-name">Sales & BDC</div><div class="dept-desc">75-100 leads/month nobody calls. Slow response. Orphan leads rotting in CRM.</div></div><div class="dept-amt">$58-76K</div></div>
-<div class="dept"><div style="flex:1;min-width:200px"><div class="dept-name">F&I</div><div class="dept-desc">$400+ PVR gap between your best and worst manager × 130 deals.</div></div><div class="dept-amt">$52-65K</div></div>
-<div class="dept"><div style="flex:1;min-width:200px"><div class="dept-name">Service & Parts</div><div class="dept-desc">65-80% of recommended work walks out. Warranty under-claiming. Parts delays.</div></div><div class="dept-amt">$38-68K</div></div>
-<div class="dept"><div style="flex:1;min-width:200px"><div class="dept-name">Inventory</div><div class="dept-desc">18 units over 60 days at $135/day carrying cost. Stocking on gut, not demand.</div></div><div class="dept-amt">$40-70K</div></div>
-<div class="dept"><div style="flex:1;min-width:200px"><div class="dept-name">Operations</div><div class="dept-desc">OpEx/unit vs. optimized. Deal flow friction. Employee turnover nobody calculates.</div></div><div class="dept-amt">$90-170K</div></div>
-<div class="dept"><div style="flex:1;min-width:200px"><div class="dept-name">Marketing & Digital</div><div class="dept-desc">30-40% of ad spend with no VIN-level ROI. Website at 1-2% when elite is 5-10%.</div></div><div class="dept-amt">$62-150K</div></div>
+<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Sales & BDC</div><div class="dept-desc">75-100 leads/month nobody calls. Slow response. Orphan leads rotting in CRM.</div></div><div class="dept-amt">$58-76K</div></div>
+<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">F&I</div><div class="dept-desc">$400+ PVR gap between your best and worst manager × 130 deals.</div></div><div class="dept-amt">$52-65K</div></div>
+<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Service & Parts</div><div class="dept-desc">65-80% of recommended work walks out. Warranty under-claiming. Parts delays.</div></div><div class="dept-amt">$38-68K</div></div>
+<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Inventory</div><div class="dept-desc">18 units over 60 days at $135/day carrying cost. Stocking on gut, not demand.</div></div><div class="dept-amt">$40-70K</div></div>
+<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Operations</div><div class="dept-desc">OpEx/unit vs. optimized. Deal flow friction. Employee turnover nobody calculates.</div></div><div class="dept-amt">$90-170K</div></div>
+<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Marketing & Digital</div><div class="dept-desc">30-40% of ad spend with no VIN-level ROI. Website at 1-2% when elite is 5-10%.</div></div><div class="dept-amt">$62-150K</div></div>
 </div>
 <div class="dept-total"><div class="dept-total-n">$600K – $1M+ / month</div><div class="dept-total-sub">Total addressable waste — 22 proprietary formulas</div><div class="dept-total-note">Pick ANY two departments. Do the math against your store. The number demands attention.</div></div>
 </div></section>
@@ -213,7 +277,7 @@ footer{border-top:1px solid var(–border);padding:36px 0 28px;background:var(�
 <!-- BRIEFING -->
 
 <section class="sec" id="briefing"><div class="w">
-<div class="sl">THE 7AM GAME CHANGER</div>
+<div class="sl reveal">THE 7AM GAME CHANGER</div>
 <h2>What Monday Morning Looks Like With CoreAI</h2>
 <p class="sp">Every morning at 7AM, every manager's phone gets a <strong>role-specific briefing.</strong> No login. 60 seconds. Every gap has a dollar amount.</p>
 <div class="brief-wrap" style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">
@@ -247,20 +311,20 @@ footer{border-top:1px solid var(–border);padding:36px 0 28px;background:var(�
 <!-- HOW IT WORKS -->
 
 <section class="sec"><div class="w">
-<div class="sl">HOW IT WORKS</div>
+<div class="sl reveal">HOW IT WORKS</div>
 <h2>Live in 30 Days. No Rip-and-Replace.</h2>
 <p class="sp"><strong>Integrates with everything. Replaces nothing.</strong> Your DMS, CRM, phones, service — they all stay.</p>
 <div class="steps">
-<div class="step"><div class="step-num">01</div><h3>We Connect</h3><p>Secure local agent connects to your existing systems — CDK, Reynolds, Tekion, DriveCentric, VinSolutions, and more.</p></div>
-<div class="step"><div class="step-num">02</div><h3>CoreAI Reads Overnight</h3><p>Reads every system, scrubs PII (never stored), runs 140+ KPIs, 32+ connections, 22 dollar formulas.</p></div>
-<div class="step"><div class="step-num">03</div><h3>7AM — Your Team Knows</h3><p>Role-specific briefings hit every manager's phone. No login. No training. 60 seconds. Dollar amounts on every gap.</p></div>
+<div class="step reveal"><div class="step-num">01</div><h3>We Connect</h3><p>Secure local agent connects to your existing systems — CDK, Reynolds, Tekion, DriveCentric, VinSolutions, and more.</p></div>
+<div class="step reveal"><div class="step-num">02</div><h3>CoreAI Reads Overnight</h3><p>Reads every system, scrubs PII (never stored), runs 140+ KPIs, 32+ connections, 22 dollar formulas.</p></div>
+<div class="step reveal"><div class="step-num">03</div><h3>7AM — Your Team Knows</h3><p>Role-specific briefings hit every manager's phone. No login. No training. 60 seconds. Dollar amounts on every gap.</p></div>
 </div>
 </div></section>
 
 <!-- MODULES -->
 
 <section class="sec" id="platform"><div class="w">
-<div class="sl">THE PLATFORM</div>
+<div class="sl reveal">THE PLATFORM</div>
 <h2>CoreAI Brain + 11 Specialized Modules</h2>
 <p class="sp">CoreAI is the brain. Modules deepen it by department. <strong>DealOptima</strong> is the F&I sub-system — already built at v3.8.</p>
 <div class="top-mods" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px">
@@ -291,23 +355,23 @@ footer{border-top:1px solid var(–border);padding:36px 0 28px;background:var(�
 <!-- MOAT - always dark -->
 
 <section class="dsec"><div class="w">
-<div class="sl">THE MOAT</div>
+<div class="sl reveal">THE MOAT</div>
 <h2>32+ Connections No Single Tool Can See</h2>
 <p class="sp">These patterns span departments that have <strong>never been connected.</strong> No bolt-on solution replicates this.</p>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:40px">
-<div class="conn"><div class="conn-ar">SERVICE → SALES</div><div><div class="conn-t">Repair exceeds equity — auto-trigger trade</div><div class="conn-v">$53K/mo (14 deals × $3,800)</div></div></div>
-<div class="conn"><div class="conn-ar">WEBSITE → BDC</div><div><div class="conn-t">AI bot detected — value-first response</div><div class="conn-v">$30-60K/mo protected</div></div></div>
-<div class="conn"><div class="conn-ar">F&I → COMPLIANCE</div><div><div class="conn-t">Markup approaching limits — prevent violation</div><div class="conn-v">$45K+ penalties prevented</div></div></div>
-<div class="conn"><div class="conn-ar">PARTS → CSI</div><div><div class="conn-t">Quote delays → declined services → CSI drop</div><div class="conn-v">$10-18K/mo + OEM risk</div></div></div>
-<div class="conn"><div class="conn-ar">DEALOPTIMA → P&L</div><div><div class="conn-t">Manager stops using tool = PVR leakage</div><div class="conn-v">$450/deal — only CoreAI sees</div></div></div>
-<div class="conn"><div class="conn-ar">PHONE → STAFFING</div><div><div class="conn-t">Peak volume + low answer = lost revenue</div><div class="conn-v">$4K+/week fix</div></div></div>
+<div class="conn reveal"><div class="conn-ar">SERVICE → SALES</div><div><div class="conn-t">Repair exceeds equity — auto-trigger trade</div><div class="conn-v">$53K/mo (14 deals × $3,800)</div></div></div>
+<div class="conn reveal"><div class="conn-ar">WEBSITE → BDC</div><div><div class="conn-t">AI bot detected — value-first response</div><div class="conn-v">$30-60K/mo protected</div></div></div>
+<div class="conn reveal"><div class="conn-ar">F&I → COMPLIANCE</div><div><div class="conn-t">Markup approaching limits — prevent violation</div><div class="conn-v">$45K+ penalties prevented</div></div></div>
+<div class="conn reveal"><div class="conn-ar">PARTS → CSI</div><div><div class="conn-t">Quote delays → declined services → CSI drop</div><div class="conn-v">$10-18K/mo + OEM risk</div></div></div>
+<div class="conn reveal"><div class="conn-ar">DEALOPTIMA → P&L</div><div><div class="conn-t">Manager stops using tool = PVR leakage</div><div class="conn-v">$450/deal — only CoreAI sees</div></div></div>
+<div class="conn reveal"><div class="conn-ar">PHONE → STAFFING</div><div><div class="conn-t">Peak volume + low answer = lost revenue</div><div class="conn-v">$4K+/week fix</div></div></div>
 </div>
 </div></section>
 
 <!-- PRICING -->
 
 <section class="sec" id="pricing"><div class="w">
-<div class="sl">INVESTMENT</div>
+<div class="sl reveal">INVESTMENT</div>
 <h2>Less Than One Missed Deal Per Month</h2>
 <p class="sp">The ROI math works before month one ends.</p>
 <div class="price-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:40px">
@@ -322,7 +386,7 @@ footer{border-top:1px solid var(–border);padding:36px 0 28px;background:var(�
 <!-- FOUNDER -->
 
 <section class="sec" id="about"><div class="w">
-<div class="sl">WHY US</div>
+<div class="sl reveal">WHY US</div>
 <h2>Built by Someone Who Sat in Every Chair</h2>
 <div class="founder-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px;align-items:center">
 <div>
@@ -342,14 +406,25 @@ footer{border-top:1px solid var(–border);padding:36px 0 28px;background:var(�
 <!-- CTA -->
 
 <section class="cta-sec" id="cta"><div class="w">
-<div class="sl">GET STARTED</div>
+<div class="sl reveal">GET STARTED</div>
 <h2>See What Your Data Is Already Telling You</h2>
 <div class="cta-urg">Every month you wait, your competitor gets 30 days smarter.</div>
-<a href="/cdn-cgi/l/email-protection#086b607a617b486c6d69646d7a67787c616569266b6765" class="btn" style="font-size:16px;padding:15px 36px">Book Your 15-Minute Demo →</a>
+<a href="mailto:chris@dealeroptima.com" class="btn" style="font-size:16px;padding:15px 36px;background:#008F7A;color:#fff">Book Your 15-Minute Demo →</a>
 <p style="margin-top:16px;color:var(--t4);font-size:13px">No pitch deck. We show you your actual gaps — and what they cost.</p>
 </div></section>
 
 <!-- FOOTER -->
 
 <footer><div class="w">
-<div class="fbot"><span>© 2026 Dealer Optima. All rights reserved.</span><span style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent)">The partner, not the vendor.</
+<div class="fbot"><span>© 2026 Dealer Optima. All rights reserved.</span><span style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent)">The partner, not the vendor.</span></div>
+</div></footer>
+
+<script>
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20)},{passive:true});
+</script>
+
+</body>
+</html>
