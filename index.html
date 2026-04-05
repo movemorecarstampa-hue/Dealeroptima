@@ -6,304 +6,435 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
 <title>Dealer Optima — Intelligence That Compounds</title>
+<meta name="description" content="CoreAI by Dealer Optima. The private AI brain for your dealership. Integrates with everything. Replaces nothing.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FFFFFF;--bg2:#F6F8FA;--card:#FFFFFF;--card-b:1.5px solid #E0E5EC;--border:#E0E5EC;--t1:#111111;--t2:#444444;--t3:#666666;--t4:#888888;--accent:#008F7A;--accent-bg:#EDF9F6;--accent-b:#B8E8DC;--red:#C93545;--red-bg:#FFF2F4;--red-b:#FFD0D6;--gold:#996D00;--gold-bg:#FFFBF0;--gold-b:#F0E0B8;--iris:#5B4BC7;--blue:#2B6CB0;--dark-card:#0B1421;--dark-t1:#F0F4F8;--dark-t2:#C0CCDB;--dark-t3:#8899AD;--teal-bright:#00E8C6;--gold-bright:#F5B731;--coral-bright:#FF5C72;--nav-bg:rgba(255,255,255,0.93);--nav-border:#E0E5EC;--cta-bg:#F6FBF9;--foot-bg:#F8F9FB}
-@media(prefers-color-scheme:dark){:root{--bg:#0B1421;--bg2:#111D30;--card:#111D30;--card-b:1.5px solid rgba(255,255,255,0.08);--border:rgba(255,255,255,0.08);--t1:#F0F4F8;--t2:#C0CCDB;--t3:#8899AD;--t4:#6B7F99;--accent:#00E8C6;--accent-bg:rgba(0,232,198,0.08);--accent-b:rgba(0,232,198,0.18);--red:#FF5C72;--red-bg:rgba(255,92,114,0.08);--red-b:rgba(255,92,114,0.18);--gold:#F5B731;--gold-bg:rgba(245,183,49,0.06);--gold-b:rgba(245,183,49,0.15);--iris:#A78BFA;--blue:#5CC8FF;--dark-card:#0F1929;--dark-t1:#F0F4F8;--dark-t2:#C0CCDB;--dark-t3:#8899AD;--teal-bright:#00E8C6;--gold-bright:#F5B731;--coral-bright:#FF5C72;--nav-bg:rgba(11,20,33,0.9);--nav-border:rgba(255,255,255,0.06);--cta-bg:#0F1929;--foot-bg:#0A1018}}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6}.w{max-width:1080px;margin:0 auto;padding:0 28px}
-nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--nav-border);padding:13px 0}nav .w{display:flex;align-items:center;justify-content:space-between}.logo{display:flex;align-items:center;gap:10px;text-decoration:none}.logo-t{font-family:Syne,sans-serif;font-weight:800;font-size:15px;color:var(--t1)}.nlinks{display:flex;gap:24px;align-items:center}.nlinks a{color:var(--t3);text-decoration:none;font-size:13px;font-weight:500}.nlinks a:hover{color:var(--t1)}.btn{background:var(--accent);color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;display:inline-block;border:none;cursor:pointer}@media(prefers-color-scheme:dark){.btn{background:#00E8C6;color:#0B1421}}.btn:hover{opacity:.9}.btn-o{border:1.5px solid var(--border);color:var(--t1);padding:9px 24px;border-radius:8px;font-weight:600;font-size:13px;text-decoration:none;background:transparent}.btn-o:hover{border-color:var(--accent);color:var(--accent)}@media(max-width:768px){.nlinks span{display:none}.w{padding:0 20px}}@media(max-width:500px){.hero-ctas{flex-direction:column}.hero-ctas a{text-align:center}}
-.sec{padding:72px 0;border-top:1px solid var(--border)}.sl{font-family:monospace;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:10px}h2{font-family:Syne,sans-serif;font-size:clamp(24px,3.8vw,38px);font-weight:800;letter-spacing:-1.2px;line-height:1.08;margin-bottom:12px;color:var(--t1)}.sp{font-size:15px;color:var(--t2);max-width:520px;line-height:1.7}.sp strong{color:var(--t1)}
-.dsec{background:var(--dark-card);color:var(--dark-t1);padding:72px 0;border:none}.dsec .sl{color:var(--teal-bright)}.dsec h2{color:var(--dark-t1)}.dsec .sp{color:var(--dark-t2)}.dsec .sp strong{color:var(--dark-t1)}
-.dept{background:var(--card);border:var(--card-b);border-radius:12px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;transition:transform .25s,box-shadow .25s,border-color .25s}.dept:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:var(--accent)}.dept-name{font-family:Syne,sans-serif;font-weight:800;font-size:15px;color:var(--t1)}.dept-desc{font-size:12px;color:var(--t2);margin-top:3px;line-height:1.5}.dept-amt{font-family:monospace;font-size:20px;font-weight:800;color:var(--red);white-space:nowrap}
-.dept-total{margin-top:20px;background:var(--accent-bg);border:2px solid var(--accent-b);border-radius:14px;padding:32px;text-align:center;transition:transform .3s}.dept-total:hover{transform:scale(1.01)}.dept-total-n{font-family:monospace;font-size:clamp(26px,4vw,42px);font-weight:800;color:var(--accent)}.dept-total-sub{font-size:14px;color:var(--t2);margin-top:6px}.dept-total-note{font-size:13px;color:var(--t4);margin-top:10px;font-style:italic}
-.brief-mock{background:#0B1421;border-radius:16px;padding:28px 24px;color:#F0F4F8;font-size:13px;animation:subtleGlow 4s ease-in-out infinite;transition:transform .3s}.brief-mock:hover{transform:scale(1.01)}.brief-kpi-row{display:flex;gap:8px;margin-bottom:14px}.brief-kpi{flex:1;background:#1A2940;border-radius:8px;padding:12px}.brief-kpi-l{font-family:monospace;font-size:9px;color:#6B7F99;letter-spacing:.5px}.brief-kpi-v{font-family:monospace;font-size:20px;font-weight:700;margin-top:3px}.brief-alert{background:#1A2940;border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:8px;color:#C0CCDB;margin-bottom:6px;font-size:12px}.brief-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}.brief-amt{margin-left:auto;font-family:monospace;font-size:11px;font-weight:700}.brief-dept{background:#1A2940;border-radius:8px;padding:8px 12px;color:#A8B8CC;margin-bottom:4px;font-size:12px}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}@media(max-width:700px){.steps{grid-template-columns:1fr 1fr}}@media(max-width:500px){.steps{grid-template-columns:1fr}}.step{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px 22px;text-align:center;transition:transform .25s,box-shadow .25s}.step:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06)}.step-num{font-family:monospace;font-size:32px;font-weight:800;color:var(--accent);margin-bottom:8px}.step h3{font-size:16px;font-weight:800;color:var(--t1);margin-bottom:6px}.step p{font-size:13px;color:var(--t2);line-height:1.6}
-.tmod{border:var(--card-b);border-radius:14px;padding:24px;background:var(--card);transition:transform .25s,box-shadow .25s,border-color .25s}.tmod:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:var(--accent)}.tmod h3{font-size:16px;font-weight:800;color:var(--t1);margin-bottom:6px}.tmod p{font-size:13px;color:var(--t2);line-height:1.6}.tmod-impact{font-family:monospace;font-size:12px;font-weight:700;color:var(--accent);margin-top:10px}
-.all-mods{margin-top:20px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px}.all-mods h3{font-family:Syne,sans-serif;font-size:16px;font-weight:800;color:var(--t1);margin-bottom:14px}.ml-item{padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--t2)}.ml-item:last-child{border-bottom:none}.ml-item strong{color:var(--t1)}.ml-tier{font-family:monospace;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 6px;border-radius:3px;margin-right:6px}
-.conn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:18px 20px;display:flex;gap:14px;transition:transform .25s,background .25s}.conn:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}.conn-ar{font-family:monospace;font-size:10px;color:#00E8C6;white-space:nowrap;font-weight:700;padding-top:2px}.conn-t{font-size:13px;font-weight:600;color:#D0DAE6}.conn-v{font-family:monospace;font-size:11px;color:#F5B731;margin-top:3px;font-weight:700}
-.pr{background:var(--card);border:var(--card-b);border-radius:14px;padding:26px 20px;text-align:center;position:relative;transition:transform .25s,box-shadow .25s}.pr:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.08)}.pr.pop{border-color:var(--accent)}.pr.pop::before{content:'POPULAR';position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--accent);color:#0B1421;font-size:8px;font-weight:800;letter-spacing:1px;padding:3px 10px;border-radius:4px}.pr-name{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:10px}.pr-amt{font-family:monospace;font-size:28px;font-weight:800;color:var(--t1)}.pr-per{font-size:11px;color:var(--t4)}.pr-desc{font-size:11px;color:var(--t3);margin:10px 0;line-height:1.5}.pr-roi{font-family:monospace;font-size:12px;font-weight:700;color:var(--gold)}
-.fq{font-size:20px;font-weight:700;line-height:1.35;padding-left:18px;border-left:3px solid var(--accent);margin-bottom:18px;color:var(--t1);transition:all .3s}.fq:hover{padding-left:24px}.fq em{color:var(--accent);font-style:normal}
-.callout{background:var(--accent-bg);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:13px;color:var(--t2);line-height:1.6;margin:14px 0}.callout strong{color:var(--t1)}
-.brand{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--t3);transition:all .2s}.brand:hover{background:var(--accent-bg);border-color:var(--accent);color:var(--accent)}
-.cta-sec{padding:80px 0;border-top:1px solid var(--border);text-align:center;background:var(--cta-bg)}.cta-urg{font-family:monospace;font-size:14px;color:var(--gold);margin:16px 0 28px;font-weight:600}
-footer{border-top:1px solid var(--border);padding:36px 0 28px;background:var(--foot-bg)}.fbot{display:flex;justify-content:space-between;font-size:11px;color:var(--t4);flex-wrap:wrap;gap:8px}
-.proof{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--t3);transition:all .3s}.proof:hover{box-shadow:0 4px 16px rgba(0,0,0,.04)}.proof strong{color:var(--t1);font-size:14px}.proof-sep{color:var(--border)}
-.agent-card{background:var(--card);border:var(--card-b);border-radius:12px;padding:18px 20px;transition:transform .25s,box-shadow .25s,border-color .25s}.agent-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:var(--accent)}.agent-name{font-weight:800;font-size:14px;color:var(--t1);margin-bottom:4px}.agent-desc{font-size:12px;color:var(--t2);line-height:1.5}.agent-tag{font-family:monospace;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 6px;border-radius:3px;margin-bottom:8px;display:inline-block}
-.disp-row{display:flex;align-items:center;gap:12px;padding:14px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;margin-bottom:8px;flex-wrap:wrap}.disp-from{font-size:13px;color:#8899AD;min-width:110px}.disp-cost{font-family:monospace;font-size:13px;color:#FF5C72;font-weight:700;min-width:100px}.disp-arrow{color:#00E8C6;font-size:16px}.disp-to{font-size:13px;color:#00E8C6;font-weight:700}
-@media(max-width:768px){.brief-wrap{grid-template-columns:1fr!important}.founder-grid{grid-template-columns:1fr!important}.top-mods{grid-template-columns:1fr!important}.mod-list{grid-template-columns:1fr!important}.proof{justify-content:center;text-align:center}.proof-sep{display:none}.agent-grid{grid-template-columns:1fr 1fr!important}}
-@media(max-width:500px){.brief-kpi-row{flex-direction:column}.price-grid{grid-template-columns:1fr 1fr!important}.agent-grid{grid-template-columns:1fr!important}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}@keyframes subtleGlow{0%,100%{box-shadow:0 0 20px rgba(0,143,122,0.08)}50%{box-shadow:0 0 40px rgba(0,143,122,0.15)}}
-.hero-enter{animation:fadeUp .8s ease-out both}.hero-enter-d1{animation-delay:.1s}.hero-enter-d2{animation-delay:.25s}.hero-enter-d3{animation-delay:.4s}.hero-enter-d4{animation-delay:.55s}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}
-.btn{transition:transform .2s,box-shadow .2s,opacity .2s}.btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,143,122,.25);opacity:1}.btn-o{transition:all .2s}.btn-o:hover{transform:translateY(-1px)}
-nav{transition:box-shadow .3s}nav.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.06)}
+:root {
+  --bg:#FFFFFF;--bg2:#F6F8FA;--card:#FFFFFF;--card-b:1.5px solid #E0E5EC;
+  --border:#E0E5EC;--t1:#111111;--t2:#444444;--t3:#666666;--t4:#888888;
+  --accent:#008F7A;--accent-bg:#EDF9F6;--accent-b:#B8E8DC;
+  --red:#C93545;--red-bg:#FFF2F4;--red-b:#FFD0D6;
+  --gold:#996D00;--gold-bg:#FFFBF0;--gold-b:#F0E0B8;
+  --dark-card:#0B1421;--dark-t1:#F0F4F8;--dark-t2:#C0CCDB;--dark-t3:#8899AD;
+  --teal-bright:#00E8C6;--gold-bright:#F5B731;--coral-bright:#FF5C72;
+  --nav-bg:rgba(255,255,255,0.93);--nav-border:#E0E5EC;
+  --cta-bg:#F6FBF9;--foot-bg:#F8F9FB;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#0B1421;--bg2:#111D30;--card:#111D30;--card-b:1.5px solid rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.08);--t1:#F0F4F8;--t2:#C0CCDB;--t3:#8899AD;--t4:#6B7F99;
+  --accent:#00E8C6;--accent-bg:rgba(0,232,198,0.08);--accent-b:rgba(0,232,198,0.18);
+  --red:#FF5C72;--red-bg:rgba(255,92,114,0.08);--red-b:rgba(255,92,114,0.18);
+  --gold:#F5B731;--gold-bg:rgba(245,183,49,0.06);--gold-b:rgba(245,183,49,0.15);
+  --nav-bg:rgba(11,20,33,0.9);--nav-border:rgba(255,255,255,0.06);
+  --cta-bg:#0F1929;--foot-bg:#0A1018;
+}}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:‘DM Sans’,sans-serif;background:var(–bg);color:var(–t1);line-height:1.6}
+.w{max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:100;background:var(–nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(–nav-border);padding:13px 0;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.06)}
+nav .w{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-t{font-family:Syne,sans-serif;font-weight:800;font-size:15px;color:var(–t1)}
+.nlinks{display:flex;gap:24px;align-items:center}
+.nlinks a{color:var(–t3);text-decoration:none;font-size:13px;font-weight:500}
+.nlinks a:hover{color:var(–t1)}
+.btn{background:var(–accent);color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:‘DM Sans’,sans-serif;transition:transform .2s,box-shadow .2s}
+@media(prefers-color-scheme:dark){.btn{background:#00E8C6;color:#0B1421}}
+.btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,143,122,.25)}
+.btn-o{border:1.5px solid var(–border);color:var(–t1);padding:9px 24px;border-radius:8px;font-weight:600;font-size:13px;text-decoration:none;background:transparent;transition:all .2s}
+.btn-o:hover{border-color:var(–accent);color:var(–accent);transform:translateY(-1px)}
+
+/* Section basics */
+.sec{padding:72px 0;border-top:1px solid var(–border)}
+.sl{font-family:monospace;font-size:11px;font-weight:700;letter-spacing:2px;color:var(–accent);text-transform:uppercase;margin-bottom:10px}
+h2{font-family:Syne,sans-serif;font-size:clamp(24px,3.8vw,38px);font-weight:800;letter-spacing:-1.2px;line-height:1.08;margin-bottom:12px;color:var(–t1)}
+.sp{font-size:15px;color:var(–t2);max-width:520px;line-height:1.7}
+.sp strong{color:var(–t1)}
+
+/* Dark section */
+.dsec{background:var(–dark-card);color:var(–dark-t1);padding:72px 0;border:none}
+.dsec .sl{color:#00E8C6}
+.dsec h2{color:var(–dark-t1)}
+.dsec .sp{color:var(–dark-t2)}
+.dsec .sp strong{color:var(–dark-t1)}
+
+/* Department cards */
+.dept{background:var(–card);border:var(–card-b);border-radius:12px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;transition:transform .25s,box-shadow .25s,border-color .25s}
+.dept:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:var(–accent)}
+.dept-name{font-family:Syne,sans-serif;font-weight:800;font-size:15px;color:var(–t1)}
+.dept-desc{font-size:12px;color:var(–t2);margin-top:3px;line-height:1.5}
+.dept-amt{font-family:monospace;font-size:20px;font-weight:800;color:var(–red);white-space:nowrap}
+.dept-total{margin-top:20px;background:var(–accent-bg);border:2px solid var(–accent-b);border-radius:14px;padding:32px;text-align:center;transition:transform .3s}
+.dept-total:hover{transform:scale(1.01)}
+.dept-total-n{font-family:monospace;font-size:clamp(26px,4vw,42px);font-weight:800;color:var(–accent)}
+.dept-total-sub{font-size:14px;color:var(–t2);margin-top:6px}
+.dept-total-note{font-size:13px;color:var(–t4);margin-top:10px;font-style:italic}
+
+/* Briefing mock */
+.brief-mock{background:#0B1421;border-radius:16px;padding:28px 24px;color:#F0F4F8;font-size:13px;animation:subtleGlow 4s ease-in-out infinite;transition:transform .3s}
+.brief-mock:hover{transform:scale(1.01)}
+.brief-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.brief-label{font-family:monospace;font-size:10px;color:#00E8C6;letter-spacing:2px;text-transform:uppercase}
+.brief-time{font-family:monospace;font-size:11px;color:#6B7F99}
+.brief-alert{background:#1A2940;border-radius:8px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;color:#C0CCDB;margin-bottom:8px;font-size:13px;line-height:1.5}
+.brief-alert:last-child{margin-bottom:0}
+.brief-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.brief-dot.urgent{background:#FF5C72;box-shadow:0 0 8px rgba(255,92,114,0.4)}
+.brief-dot.action{background:#00E8C6;box-shadow:0 0 8px rgba(0,232,198,0.4)}
+.brief-dot.insight{background:#A78BFA;box-shadow:0 0 8px rgba(167,139,250,0.3)}
+.brief-text strong{color:#F0F4F8}
+.brief-amt{font-family:monospace;font-size:12px;color:#F5B731;margin-top:4px;font-weight:700;display:block}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.step{background:var(–bg2);border:1px solid var(–border);border-radius:14px;padding:28px 22px;text-align:center;transition:transform .25s,box-shadow .25s}
+.step:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.step-num{font-family:monospace;font-size:32px;font-weight:800;color:var(–accent);margin-bottom:8px}
+.step h3{font-size:16px;font-weight:800;color:var(–t1);margin-bottom:6px}
+.step p{font-size:13px;color:var(–t2);line-height:1.6}
+
+/* Golden rule */
+.golden-box{background:var(–accent-bg);border:2px solid var(–accent-b);border-radius:16px;padding:48px 40px;text-align:center;margin-top:40px}
+.golden-box h2 span{color:var(–accent)}
+.golden-box p{font-size:16px;color:var(–t2);max-width:560px;margin:0 auto;line-height:1.7}
+
+/* Security cards */
+.sec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.sec-card{background:var(–card);border:var(–card-b);border-radius:12px;padding:28px 22px;text-align:center;transition:transform .25s,box-shadow .25s}
+.sec-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.sec-card .ico{font-size:28px;margin-bottom:14px;display:block}
+.sec-card h4{font-size:16px;font-weight:800;color:var(–t1);margin-bottom:6px}
+.sec-card p{font-size:13px;color:var(–t2);line-height:1.6}
+
+/* Displacement */
+.disp-row{display:flex;align-items:center;gap:12px;padding:14px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;margin-bottom:8px;flex-wrap:wrap}
+.disp-from{font-size:13px;color:#8899AD;min-width:130px}
+.disp-cost{font-family:monospace;font-size:13px;color:#FF5C72;font-weight:700;min-width:120px}
+.disp-arrow{color:#00E8C6;font-size:16px}
+.disp-to{font-size:13px;color:#00E8C6;font-weight:700}
+
+/* Founder */
+.founder-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.fq{font-size:20px;font-weight:700;line-height:1.35;padding-left:18px;border-left:3px solid var(–accent);margin-bottom:18px;color:var(–t1)}
+.fq em{color:var(–accent);font-style:normal}
+.roles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.role-tag{background:var(–bg2);border:1px solid var(–border);border-radius:8px;padding:14px 16px;text-align:center;transition:all .25s}
+.role-tag:hover{border-color:var(–accent);transform:translateY(-2px)}
+.role-name{font-size:14px;font-weight:800;color:var(–t1);margin-bottom:2px}
+.role-detail{font-size:11px;color:var(–t3)}
+
+/* CTA */
+.cta-sec{padding:80px 0;border-top:1px solid var(–border);text-align:center;background:var(–cta-bg)}
+.cta-urg{font-family:monospace;font-size:14px;color:var(–gold);margin:16px 0 28px;font-weight:600}
+
+/* Footer */
+footer{border-top:1px solid var(–border);padding:36px 0 28px;background:var(–foot-bg)}
+.fbot{display:flex;justify-content:space-between;font-size:11px;color:var(–t4);flex-wrap:wrap;gap:8px}
+
+/* Callout */
+.callout{background:var(–accent-bg);border-left:3px solid var(–accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:13px;color:var(–t2);line-height:1.6;margin:14px 0}
+.callout strong{color:var(–t1)}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes subtleGlow{0%,100%{box-shadow:0 0 20px rgba(0,143,122,0.08)}50%{box-shadow:0 0 40px rgba(0,143,122,0.15)}}
+.hero-enter{animation:fadeUp .8s ease-out both}
+.hero-enter-d1{animation-delay:.1s}
+.hero-enter-d2{animation-delay:.25s}
+.hero-enter-d3{animation-delay:.4s}
+.hero-enter-d4{animation-delay:.55s}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+
+/* Responsive */
+@media(max-width:768px){
+.nlinks span{display:none}
+.w{padding:0 20px}
+.founder-grid{grid-template-columns:1fr!important}
+.sec-grid{grid-template-columns:1fr!important}
+.steps{grid-template-columns:1fr 1fr}
+}
+@media(max-width:500px){
+.hero-ctas{flex-direction:column}
+.hero-ctas a{text-align:center}
+.steps{grid-template-columns:1fr}
+.roles-grid{grid-template-columns:1fr}
+}
 </style>
+
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ══════════ NAV ══════════ -->
 
 <nav><div class="w">
-<a href="#" class="logo">
-<svg width="26" height="26" viewBox="0 0 110 110" fill="none"><path d="M55 8 L97 28 L97 78 L55 98 L13 78 L13 28 Z" stroke="currentColor" stroke-width="3" fill="none" style="color:var(--accent)"/><path d="M55 22 L82 36 L82 72 L55 86 L28 72 L28 36 Z" stroke="currentColor" stroke-width="2" fill="none" style="color:var(--accent);opacity:.3"/><circle cx="55" cy="53" r="7" fill="currentColor" style="color:var(--accent)"/></svg>
-<span class="logo-t">DEALER OPTIMA</span></a>
-<div class="nlinks"><span><a href="#money">The Math</a></span><span><a href="#briefing">The Briefing</a></span><span><a href="#platform">Platform</a></span><span><a href="#pricing">Pricing</a></span><a href="#cta" class="btn">Book a Demo</a></div>
+  <a href="#" class="logo">
+    <svg width="26" height="26" viewBox="0 0 36 36" fill="none">
+      <circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="1.5" opacity="0.3" style="color:var(--accent)"/>
+      <line x1="12" y1="12" x2="18" y2="18" stroke="currentColor" stroke-width="1" opacity="0.5" style="color:var(--accent)"/>
+      <line x1="24" y1="12" x2="18" y2="18" stroke="currentColor" stroke-width="1" opacity="0.5" style="color:var(--accent)"/>
+      <line x1="12" y1="24" x2="18" y2="18" stroke="currentColor" stroke-width="1" opacity="0.5" style="color:var(--accent)"/>
+      <line x1="24" y1="24" x2="18" y2="18" stroke="currentColor" stroke-width="1" opacity="0.5" style="color:var(--accent)"/>
+      <line x1="12" y1="12" x2="24" y2="12" stroke="currentColor" stroke-width="0.8" opacity="0.3" style="color:var(--accent)"/>
+      <line x1="12" y1="24" x2="24" y2="24" stroke="currentColor" stroke-width="0.8" opacity="0.3" style="color:var(--accent)"/>
+      <line x1="12" y1="12" x2="12" y2="24" stroke="currentColor" stroke-width="0.8" opacity="0.3" style="color:var(--accent)"/>
+      <line x1="24" y1="12" x2="24" y2="24" stroke="currentColor" stroke-width="0.8" opacity="0.3" style="color:var(--accent)"/>
+      <line x1="18" y1="18" x2="18" y2="6" stroke="currentColor" stroke-width="1" opacity="0.4" style="color:var(--accent)"/>
+      <line x1="18" y1="18" x2="18" y2="30" stroke="currentColor" stroke-width="1" opacity="0.4" style="color:var(--accent)"/>
+      <line x1="18" y1="18" x2="6" y2="18" stroke="currentColor" stroke-width="1" opacity="0.4" style="color:var(--accent)"/>
+      <line x1="18" y1="18" x2="30" y2="18" stroke="currentColor" stroke-width="1" opacity="0.4" style="color:var(--accent)"/>
+      <circle cx="12" cy="12" r="2.5" fill="currentColor" opacity="0.7" style="color:var(--accent)"/>
+      <circle cx="24" cy="12" r="2.5" fill="currentColor" opacity="0.7" style="color:var(--accent)"/>
+      <circle cx="12" cy="24" r="2.5" fill="currentColor" opacity="0.7" style="color:var(--accent)"/>
+      <circle cx="24" cy="24" r="2.5" fill="currentColor" opacity="0.7" style="color:var(--accent)"/>
+      <circle cx="18" cy="6" r="2" fill="currentColor" opacity="0.5" style="color:var(--accent)"/>
+      <circle cx="18" cy="30" r="2" fill="currentColor" opacity="0.5" style="color:var(--accent)"/>
+      <circle cx="6" cy="18" r="2" fill="currentColor" opacity="0.5" style="color:var(--accent)"/>
+      <circle cx="30" cy="18" r="2" fill="currentColor" opacity="0.5" style="color:var(--accent)"/>
+      <circle cx="18" cy="18" r="4" fill="currentColor" style="color:var(--accent)"/>
+    </svg>
+    <span class="logo-t">DEALER OPTIMA</span>
+  </a>
+  <div class="nlinks">
+    <span><a href="#money">The Math</a></span>
+    <span><a href="#briefing">The Briefing</a></span>
+    <span><a href="#how">How It Works</a></span>
+    <span><a href="#founder">About</a></span>
+    <a href="#cta" class="btn">Book a Demo</a>
+  </div>
 </div></nav>
 
-<!-- HERO — UPDATED: $600K → $175K, proof strip all v2.1 numbers -->
+<!-- ══════════ HERO ══════════ -->
 
 <section style="padding:72px 0 56px;border-bottom:1px solid var(--border)"><div class="w">
-<div style="font-family:monospace;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:20px" class="hero-enter hero-enter-d1">THE AI-NATIVE OPERATING SYSTEM FOR DEALERSHIPS</div>
-<h1 style="font-family:Syne,sans-serif;font-size:clamp(30px,5.5vw,54px);font-weight:800;line-height:1.06;letter-spacing:-2px;margin-bottom:18px;max-width:700px;color:var(--t1)" class="hero-enter hero-enter-d2">Your dealership is leaking <span style="color:var(--accent)">$175,000+ every month.</span><br><span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400">You just can't see it yet.</span></h1>
-<p style="font-size:17px;color:var(--t2);line-height:1.7;max-width:540px;margin-bottom:28px" class="hero-enter hero-enter-d3">It's not one big problem. It's <strong style="color:var(--t1)">hundreds of small ones</strong> across every department — sales, F&I, service, parts, BDC, marketing, inventory. No single tool sees them all. <strong style="color:var(--t1)">CoreAI does.</strong> 310 KPIs. 16 modules. 12 AI agents. One brain.</p>
-<div class="hero-ctas hero-enter hero-enter-d4" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px"><a href="#cta" class="btn" style="font-size:16px;padding:15px 36px">See What You're Missing →</a><a href="#money" class="btn-o">Show Me the Math</a></div>
-<div class="proof"><strong>310 KPIs</strong><span class="proof-sep">|</span><strong>72+ Cross-Dept Connections</strong><span class="proof-sep">|</span><strong>38 Dollar Formulas</strong><span class="proof-sep">|</span><strong>21 Domains</strong><span class="proof-sep">|</span><strong>16 Modules</strong><span class="proof-sep">|</span><strong>12 AI Agents</strong><span class="proof-sep">|</span><strong>7 Hot Lists</strong><span class="proof-sep">|</span><strong>50-State Compliance</strong></div>
+  <div class="sl hero-enter hero-enter-d1">THE PRIVATE AI BRAIN FOR YOUR DEALERSHIP</div>
+  <h1 style="font-family:Syne,sans-serif;font-size:clamp(30px,5.5vw,54px);font-weight:800;line-height:1.06;letter-spacing:-2px;margin-bottom:18px;max-width:700px;color:var(--t1)" class="hero-enter hero-enter-d2">
+    Your dealership is leaking <span style="color:var(--accent)">$175,000+ every month.</span><br>
+    <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400">You just can't see it yet.</span>
+  </h1>
+  <p style="font-size:17px;color:var(--t2);line-height:1.7;max-width:540px;margin-bottom:28px" class="hero-enter hero-enter-d3">
+    It's not one big problem. It's <strong style="color:var(--t1)">hundreds of small ones</strong> across every department&nbsp;&mdash; sales, F&amp;I, service, BDC, inventory. No single tool sees them all. <strong style="color:var(--t1)">CoreAI does.</strong> One brain. Every department. Every dollar.
+  </p>
+  <div class="hero-ctas hero-enter hero-enter-d4" style="display:flex;gap:12px;flex-wrap:wrap">
+    <a href="#cta" class="btn" style="font-size:16px;padding:15px 36px">See What You're Missing &rarr;</a>
+    <a href="#money" class="btn-o">Show Me the Math</a>
+  </div>
 </div></section>
 
-<!-- MATH — UPDATED: All honest 130-unit math -->
+<!-- ══════════ THE MATH ══════════ -->
 
 <section class="sec" id="money"><div class="w">
-<div class="sl reveal">LET'S DO THE MATH — BASED ON A 130-UNIT STORE</div>
-<h2>Here's Where Your Money Is Going</h2>
-<p class="sp">Calculated against a <strong>real 130-unit store</strong> using 38 defensible formulas. We calculate your specific numbers in the first meeting.</p>
-<div style="display:grid;gap:14px;margin-top:40px">
-<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">PVR Gap (F&I)</div><div class="dept-desc">Target PVR vs actual × 130 units × 65% realistic Year 1 closure rate.</div></div><div class="dept-amt">$33,800</div></div>
-<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Aged Inventory + Wholesale</div><div class="dept-desc">13 units over 60 days × $45/day carry cost + 4 wholesale × $1,200 avg loss.</div></div><div class="dept-amt">$19,400</div></div>
-<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Phone Answer Gap</div><div class="dept-desc">576 missed calls × 40% sales-relevant × appt × show × close × gross.</div></div><div class="dept-amt">$17,100</div></div>
-<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Lead Response Delay</div><div class="dept-desc">600 leads × conversion decay at 45-min response × show × close × gross.</div></div><div class="dept-amt">$13,700</div></div>
-<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Contact Rate Gap</div><div class="dept-desc">Moving from 45% to 60% contact rate × appointment funnel × avg total gross.</div></div><div class="dept-amt">$13,400</div></div>
-<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Deal Flow Friction</div><div class="dept-desc">F&I wait time + excessive pencils + poor handoffs + customer walkouts.</div></div><div class="dept-amt">$12,000</div></div>
-<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">DealOptima Non-Adoption</div><div class="dept-desc">26 manually structured deals/mo × $300 conservative per-deal lift.</div></div><div class="dept-amt">$7,800</div></div>
-<div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Orphan Leads</div><div class="dept-desc">67% annual turnover × 40 abandoned leads per departure × conversion × gross.</div></div><div class="dept-amt">$7,500</div></div>
-</div>
-<div class="dept-total"><div class="dept-total-n">$175,000 – $200,000 / month</div><div class="dept-total-sub">Top 10 of 38 formulas — 130-unit baseline store</div><div class="dept-total-note">Scales with volume: 80 units = $85–110K/mo · 250+ units = $280–400K/mo. Every formula shown. Every number defensible.</div></div>
+  <div class="sl reveal">LET'S DO THE MATH &mdash; BASED ON A 130-UNIT STORE</div>
+  <h2>Here's Where Your Money Is Going</h2>
+  <p class="sp">Calculated against a <strong>real 130-unit store</strong> using defensible formulas. We calculate your specific numbers in the first meeting.</p>
+
+  <div style="display:grid;gap:14px;margin-top:40px">
+    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">PVR Gap (F&amp;I)</div><div class="dept-desc">Target PVR vs actual &times; 130 units &times; 65% realistic Year 1 closure rate.</div></div><div class="dept-amt">$33,800</div></div>
+    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Aged Inventory + Wholesale</div><div class="dept-desc">13 units over 60 days &times; $45/day carry cost + 4 wholesale &times; $1,200 avg loss.</div></div><div class="dept-amt">$19,400</div></div>
+    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Phone Answer Gap</div><div class="dept-desc">576 missed calls &times; 40% sales-relevant &times; appt &times; show &times; close &times; gross.</div></div><div class="dept-amt">$17,100</div></div>
+    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Lead Response Delay</div><div class="dept-desc">600 leads &times; conversion decay at 45-min response &times; show &times; close &times; gross.</div></div><div class="dept-amt">$13,700</div></div>
+    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Contact Rate Gap</div><div class="dept-desc">Moving from 45% to 60% contact rate &times; appointment funnel &times; avg total gross.</div></div><div class="dept-amt">$13,400</div></div>
+    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Deal Flow Friction</div><div class="dept-desc">F&amp;I wait time + excessive pencils + poor handoffs + customer walkouts.</div></div><div class="dept-amt">$12,000</div></div>
+    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">F&amp;I Intelligence Non-Adoption</div><div class="dept-desc">26 manually structured deals/mo &times; $300 conservative per-deal lift.</div></div><div class="dept-amt">$7,800</div></div>
+    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Orphan Leads</div><div class="dept-desc">67% annual turnover &times; 40 abandoned leads per departure &times; conversion &times; gross.</div></div><div class="dept-amt">$7,500</div></div>
+  </div>
+
+  <div class="dept-total reveal">
+    <div class="dept-total-n">$175,000 &ndash; $200,000 / month</div>
+    <div class="dept-total-sub">Top 10 of 38 formulas &mdash; 130-unit baseline store</div>
+    <div class="dept-total-note">Scales with volume: 80 units = $85&ndash;110K/mo &middot; 250+ units = $280&ndash;400K/mo. Every formula shown. Every number defensible.</div>
+  </div>
 </div></section>
 
-<!-- BRIEFING — UPDATED: Store Health Score, cause chain, month-end projection -->
+<!-- ══════════ BRIEFING ══════════ -->
 
-<section class="sec" id="briefing"><div class="w">
-<div class="sl reveal">THE 7AM GAME CHANGER</div>
-<h2>What Monday Morning Looks Like With CoreAI</h2>
-<p class="sp">Every morning at 7AM, every manager's phone gets a <strong>role-specific briefing.</strong> Wins first. Predicted month-end. #1 priority with dollar value. Every gap has a cause chain.</p>
-<div class="brief-wrap" style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">
-<div class="brief-mock">
-<div style="font-family:Syne,sans-serif;font-size:16px;font-weight:800">GM Morning Briefing</div>
-<div style="font-family:monospace;font-size:11px;color:#6B7F99;margin-bottom:18px">MONDAY 7:00 AM — YOUR PHONE</div>
-<div class="brief-kpi-row">
-<div class="brief-kpi"><div class="brief-kpi-l">STORE HEALTH</div><div class="brief-kpi-v" style="color:#00E8C6">78</div></div>
-<div class="brief-kpi"><div class="brief-kpi-l">MONTH-END PROJ</div><div class="brief-kpi-v" style="color:#F5B731">138 units</div></div>
-<div class="brief-kpi"><div class="brief-kpi-l">$ AT RISK</div><div class="brief-kpi-v" style="color:#FF5C72">$127K</div></div>
-</div>
-<div style="font-family:monospace;font-size:10px;color:#6B7F99;letter-spacing:1px;margin-bottom:8px">#1 PRIORITY BY DOLLAR IMPACT</div>
-<div class="brief-alert"><span class="brief-dot" style="background:#FF5C72"></span>F&I wait avg 32min — PVR declining $47/wk × 3 wks<span class="brief-amt" style="color:#FF5C72">-$33K</span></div>
-<div style="font-family:monospace;font-size:10px;color:#6B7F99;letter-spacing:1px;margin:14px 0 8px">CAUSE CHAIN</div>
-<div class="brief-alert"><span class="brief-dot" style="background:#F5B731"></span>Root: DealOptima bypassed → manual structuring → longer wait → PVR drop → CSI risk<span class="brief-amt" style="color:#F5B731">FIX</span></div>
-<div style="font-family:monospace;font-size:10px;color:#6B7F99;letter-spacing:1px;margin:14px 0 8px">DEPARTMENT HEALTH</div>
-<div class="brief-dept">🟢 Service — RO value up 8%. MPI completion 94%.</div>
-<div class="brief-dept">🟡 Sales — BDC answer rate dropped 12% Thu-Fri</div>
-<div class="brief-dept">🔴 F&I — Smith PVR $980 last 8 deals. Academy training triggered.</div>
-</div>
-<div>
-<h3 style="font-family:Syne,sans-serif;font-size:20px;font-weight:800;margin-bottom:12px;color:var(--t1)">This changes everything.</h3>
-<p style="font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:14px">Right now you walk into Monday and ask "how'd we do?" Then you spend an hour across 12 different systems hoping the numbers match.</p>
-<p style="font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:14px"><strong style="color:var(--t1)">With CoreAI, you already know.</strong> Store Health Score. Predicted month-end. #1 priority with dollar value. Cause chain traced to the root. Before your first coffee.</p>
-<div class="callout"><strong>Every manager gets their own.</strong> F&I sees PVR gaps + compliance. Service sees the RO funnel + parts delays. BDC sees response times + show rates. Used Car sees aged inventory + wholesale decisions. 12 role-based views total.</div>
-<p style="font-size:14px;color:var(--t2);line-height:1.7;margin-top:14px"><strong style="color:var(--t1)">The part that compounds:</strong> CoreAI tracks what happens after every alert. Did the manager act? Did it work? Green dot above. Red dot below. Recommendations get sharper every month.</p>
-</div>
-</div>
+<section class="dsec" id="briefing"><div class="w">
+  <div class="sl reveal">THE 7 AM GAME CHANGER</div>
+  <h2 class="reveal">Monday Morning Without CoreAI: 90 Minutes Across 8 Systems.<br>With CoreAI: 90 Seconds on Your Phone.</h2>
+  <p class="sp reveal" style="margin-bottom:40px">Every manager gets a prioritized action list ranked by dollar impact. No guessing. No digging. No meetings to figure out yesterday.</p>
+
+  <div class="brief-mock reveal">
+    <div class="brief-head">
+      <span class="brief-label">CoreAI Morning Briefing</span>
+      <span class="brief-time">Mon 7:01 AM</span>
+    </div>
+    <div class="brief-alert">
+      <div class="brief-dot urgent"></div>
+      <div>
+        <div class="brief-text"><strong>3 deals from Saturday missing F&amp;I products.</strong> Menu not presented on 2. Compliance gap on 1.</div>
+        <span class="brief-amt">$2,850 in missed PVR</span>
+      </div>
+    </div>
+    <div class="brief-alert">
+      <div class="brief-dot action"></div>
+      <div>
+        <div class="brief-text"><strong>14 units hit 45-day age threshold.</strong> 6 priced above market. Recommended repricing attached.</div>
+        <span class="brief-amt">$4,200/mo carrying cost at risk</span>
+      </div>
+    </div>
+    <div class="brief-alert">
+      <div class="brief-dot insight"></div>
+      <div>
+        <div class="brief-text"><strong>Service-to-sales conversion dropped 40%.</strong> Equity notifications not reaching the sales floor. Process gap identified.</div>
+        <span class="brief-amt">$18,000/mo opportunity</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout reveal" style="background:rgba(0,232,198,0.06);border-left-color:#00E8C6;color:#C0CCDB;margin-top:24px">
+    <strong style="color:#F0F4F8">Every finding has a dollar amount.</strong> Every action item is ranked by financial impact. Your GM knows exactly what to fix first&nbsp;&mdash; before they walk through the door.
+  </div>
 </div></section>
 
-<!-- HOT LISTS — NEW: Daily action lists per role -->
+<!-- ══════════ WHAT IT REPLACES ══════════ -->
 
-<section class="dsec"><div class="w">
-<div class="sl reveal">HOT LISTS</div>
-<h2>Your Daily Action List. Prioritized by Dollars.</h2>
-<p class="sp">Every morning alongside the briefing, every manager gets a <strong>ranked list of people, units, and opportunities to act on TODAY.</strong> Each item shows who, why, what to do, and how much it's worth.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:40px">
-<div class="conn reveal"><div class="conn-ar">GM</div><div><div class="conn-t">Top 10 Revenue Opportunities</div><div class="conn-v">Highest-dollar items from every department, ranked</div></div></div>
-<div class="conn reveal"><div class="conn-ar">SALES</div><div><div class="conn-t">Hot Buyers — Scored 0-100</div><div class="conn-v">Payment calc users, return visitors, equity customers, trade-ready</div></div></div>
-<div class="conn reveal"><div class="conn-ar">F&I</div><div><div class="conn-t">Deal Pipeline + Stip Alerts</div><div class="conn-v">Pre-structured deals, funding risks, expiring contracts</div></div></div>
-<div class="conn reveal"><div class="conn-ar">SERVICE</div><div><div class="conn-t">Equity Flags + Declined Recapture</div><div class="conn-v">Repair > equity trades, previously declined services, warranty expiring</div></div></div>
-<div class="conn reveal"><div class="conn-ar">BDC</div><div><div class="conn-t">Priority Leads — Real-Time</div><div class="conn-v">Needs action, follow-up due, bot watch, orphan leads</div></div></div>
-<div class="conn reveal"><div class="conn-ar">USED CAR</div><div><div class="conn-t">Aging + Acquisition + Recon</div><div class="conn-v">45/60 day alerts, trade opportunities, recon bottlenecks</div></div></div>
-<div class="conn reveal"><div class="conn-ar">MARKETING</div><div><div class="conn-t">ROI Actions — Weekly + Alerts</div><div class="conn-v">Increase/decrease/pause campaigns, creative fatigue, waste</div></div></div>
-</div>
-<div style="margin-top:28px;background:rgba(0,232,198,0.08);border:1px solid rgba(0,232,198,0.18);border-radius:12px;padding:24px">
-<div style="font-family:Syne,sans-serif;font-weight:800;font-size:16px;color:#00E8C6;margin-bottom:10px">The Monday Morning Difference</div>
-<p style="font-size:13px;color:#C0CCDB;line-height:1.6"><strong style="color:#F0F4F8">Without CoreAI:</strong> GM arrives. Opens email. 47 unread. Walks the floor. Asks "how was Saturday?" Gets a vague answer. 45 minutes to piece together what happened.</p>
-<p style="font-size:13px;color:#C0CCDB;line-height:1.6;margin-top:10px"><strong style="color:#00E8C6">With CoreAI:</strong> GM opens phone. Hot List: "Weekend: 14 deals, PVR down $200 — DealOptima bypassed on 4 deals ($2,800 gap). 3 aged units hit 60 days ($147/day). Sarah M. used payment calc 3x on Tahoe — hot buyer, +$4,200 equity." <strong style="color:#F0F4F8">90 seconds. Before coffee.</strong></p>
-</div>
+<section class="dsec" style="border-top:1px solid rgba(255,255,255,0.06)"><div class="w">
+  <div class="sl reveal">SAVE MONEY. GET MORE.</div>
+  <h2 class="reveal">Replace Point Solutions. Keep Everything Else.</h2>
+  <p class="sp reveal" style="margin-bottom:32px">CoreAI doesn't replace your DMS, CRM, or phone system. It replaces the <strong>expensive point solutions</strong> bolted on top of them.</p>
+
+  <div style="display:grid;gap:8px" class="reveal">
+    <div class="disp-row"><span class="disp-from">AutoAlert / equity mining</span><span class="disp-cost">$800&ndash;2,000/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
+    <div class="disp-row"><span class="disp-from">Reputation.com / reviews</span><span class="disp-cost">$300&ndash;1,000/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
+    <div class="disp-row"><span class="disp-from">Car Wars / call tracking</span><span class="disp-cost">$300&ndash;1,000/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
+    <div class="disp-row"><span class="disp-from">vAuto (pricing portion)</span><span class="disp-cost">$1,200&ndash;2,500/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
+    <div class="disp-row"><span class="disp-from">JM&amp;A / F&amp;I performance</span><span class="disp-cost">$1,500&ndash;3,000/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
+    <div class="disp-row"><span class="disp-from">Compliance add-ons</span><span class="disp-cost">$200&ndash;800/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
+    <div class="disp-row"><span class="disp-from">BDC outsourcing</span><span class="disp-cost">$3,000&ndash;8,000/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
+    <div class="disp-row" style="background:rgba(0,232,198,0.08);border-color:rgba(0,232,198,0.2)"><span class="disp-from" style="color:#F0F4F8;font-weight:800">Total displaced</span><span class="disp-cost" style="color:#FF5C72;font-size:16px">$7,300&ndash;18,300/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to" style="font-size:15px">All included in CoreAI</span></div>
+  </div>
 </div></section>
 
-<!-- HOW IT WORKS — UPDATED: 4 steps, v2.1 numbers -->
+<!-- ══════════ HOW IT WORKS ══════════ -->
+
+<section class="sec" id="how"><div class="w">
+  <div class="sl reveal">INTELLIGENCE THAT COMPOUNDS</div>
+  <h2 class="reveal">The System Earns Your Trust</h2>
+  <p class="sp reveal">CoreAI starts quiet and gets smarter. It never overwhelms your team.</p>
+
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <h3>Install Day</h3>
+      <p>4-hour setup. Connected to your existing systems. Your team changes nothing.</p>
+    </div>
+    <div class="step reveal reveal-d1">
+      <div class="step-num">02</div>
+      <h3>Week 2</h3>
+      <p>First briefings. Top 3 findings by dollar impact. Real numbers, not guesses.</p>
+    </div>
+    <div class="step reveal reveal-d2">
+      <div class="step-num">03</div>
+      <h3>Month 1&ndash;2</h3>
+      <p>Expanding intelligence. Deeper patterns. Your managers teach the system what matters at YOUR store.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <h3>Month 3+</h3>
+      <p>Full capability. Predictions calibrated. Store-specific benchmarks. Month-end is never a surprise.</p>
+    </div>
+  </div>
+
+  <!-- Golden Rule -->
+
+  <div class="golden-box reveal" style="margin-top:48px">
+    <h2>Integrates with <span>Everything.</span><br>Replaces <span>Nothing.</span></h2>
+    <p style="margin-top:12px">Keep your DMS. Keep your CRM. Keep your phone system, your website, your chat tool. CoreAI is the brain, not the body. It makes everything you already have intelligent.</p>
+  </div>
+</div></section>
+
+<!-- ══════════ SECURITY ══════════ -->
 
 <section class="sec"><div class="w">
-<div class="sl reveal">HOW IT WORKS</div>
-<h2>Live in 30 Days. No Rip-and-Replace.</h2>
-<p class="sp"><strong>Integrates with everything. Replaces nothing.</strong> Your DMS, CRM, phones, service — they all stay. Or replace your point-solution AI tools and save money.</p>
-<div class="steps">
-<div class="step reveal"><div class="step-num">01</div><h3>We Connect</h3><p>Secure local agent connects to your existing systems. PII never stored. DealOptima goes live Day 1.</p></div>
-<div class="step reveal"><div class="step-num">02</div><h3>It Learns</h3><p>310 KPI checks nightly. Industry benchmarks Day 1. Your store baseline by Day 30. Green above. Red below.</p></div>
-<div class="step reveal"><div class="step-num">03</div><h3>You Act</h3><p>7AM briefings. Predictive month-end. Cause chain analysis. 12 agents deploy in waves. Results tracked.</p></div>
-<div class="step reveal"><div class="step-num">04</div><h3>It Compounds</h3><p>Learning engine improves. 72+ connections sharpen. Month 12 intelligence is nothing like Month 1.</p></div>
-</div>
+  <div class="sl reveal" style="text-align:center">YOUR DATA</div>
+  <h2 class="reveal" style="text-align:center">Your Data. Your Building. Your&nbsp;Brain.</h2>
+  <p class="sp reveal" style="text-align:center;max-width:520px;margin:0 auto">CoreAI was designed from day one around a simple principle: your data never leaves your dealership.</p>
+
+  <div class="sec-grid">
+    <div class="sec-card reveal">
+      <span class="ico">&#128274;</span>
+      <h4>Private Processing</h4>
+      <p>All intelligence runs inside your building. No cloud dependency. No external servers processing your deals.</p>
+    </div>
+    <div class="sec-card reveal reveal-d1">
+      <span class="ico">&#128737;</span>
+      <h4>No Data Leaves</h4>
+      <p>Customer data, deal data, financial data&nbsp;&mdash; stays in your building. More secure than every cloud tool you use today.</p>
+    </div>
+    <div class="sec-card reveal reveal-d2">
+      <span class="ico">&#129504;</span>
+      <h4>Your Intelligence Stays</h4>
+      <p>Everything CoreAI learns about your store stays in your store's brain. It is YOUR competitive advantage. Nobody else sees it.</p>
+    </div>
+  </div>
 </div></section>
 
-<!-- MODULES — UPDATED: 16 modules, v2.1 tiers -->
+<!-- ══════════ FOUNDER ══════════ -->
 
-<section class="sec" id="platform"><div class="w">
-<div class="sl reveal">THE PLATFORM</div>
-<h2>CoreAI Brain + 16 Modules + 12 AI Agents</h2>
-<p class="sp">CoreAI is the brain. Modules deepen it by department. Agents act on it autonomously. <strong>DealOptima v3.8 is already built and running.</strong></p>
-<div class="top-mods" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px">
-<div class="tmod"><h3>🎯 DealOptima — F&I Intelligence</h3><p>Deal health scoring (0-100), lender matching across 14+ lenders, Deal Doctor fixes, product optimization. v3.8 running now.</p><div class="tmod-impact">+$450/deal vs. manual structuring</div></div>
-<div class="tmod"><h3>⛏️ EquityPulse — Equity Mining</h3><p>Two-phase: engagement first, then convert. Connected to trade cycle models, service history, and inventory needs.</p><div class="tmod-impact">$15-30K/mo recovered</div></div>
-<div class="tmod"><h3>🔧 ServicePulse — Fixed Ops</h3><p>MPI → Tech Rec → Advisor → Approval → CSI. Every stage. Service-to-sales flagging. Parts coordination.</p><div class="tmod-impact">$25-45K/mo service recovery</div></div>
-<div class="tmod"><h3>📊 DeskIQ — Negotiation Intelligence</h3><p>Deal Strategy Card. Payment Path Calculator. 10 hard-coded desk rules. Bot detection. Floor protection. Shadow verification.</p><div class="tmod-impact">$5-12K/mo gross protected</div></div>
-</div>
-<div class="all-mods">
-<h3>All 16 Modules</h3>
-<div class="mod-list" style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-<div class="ml-item"><span class="ml-tier" style="background:var(--accent-bg);color:var(--accent)">STARTER</span><strong>CoreAI Brain</strong> — 310 KPIs, briefings, 72+ connections</div>
-<div class="ml-item"><span class="ml-tier" style="background:var(--accent-bg);color:var(--accent)">STARTER</span><strong>DealOptima</strong> — F&I structuring (v3.8 live)</div>
-<div class="ml-item"><span class="ml-tier" style="background:var(--accent-bg);color:var(--accent)">STARTER</span><strong>GuardRail</strong> — 50-state compliance</div>
-<div class="ml-item"><span class="ml-tier" style="background:var(--accent-bg);color:var(--accent)">STARTER</span><strong>DeskIQ</strong> — Desking + negotiation intelligence</div>
-<div class="ml-item"><span class="ml-tier" style="background:#EEEAFF;color:#6B5CE7">PRO</span><strong>LenderPulse</strong> — Real lender outcomes</div>
-<div class="ml-item"><span class="ml-tier" style="background:#EEEAFF;color:#6B5CE7">PRO</span><strong>Academy</strong> — Gap-driven training</div>
-<div class="ml-item"><span class="ml-tier" style="background:#EEEAFF;color:#6B5CE7">PRO</span><strong>CSIQ</strong> — OEM CSI protection (10 profiles)</div>
-<div class="ml-item"><span class="ml-tier" style="background:#EEEAFF;color:#6B5CE7">PRO</span><strong>TradeIQ</strong> — Appraisal intelligence</div>
-<div class="ml-item"><span class="ml-tier" style="background:var(--gold-bg);color:var(--gold)">GROWTH</span><strong>EquityPulse</strong> — Equity mining AI</div>
-<div class="ml-item"><span class="ml-tier" style="background:var(--gold-bg);color:var(--gold)">GROWTH</span><strong>ReviewIQ</strong> — Reputation intelligence</div>
-<div class="ml-item"><span class="ml-tier" style="background:var(--gold-bg);color:var(--gold)">GROWTH</span><strong>InventoryIQ</strong> — Inventory intelligence</div>
-<div class="ml-item"><span class="ml-tier" style="background:var(--gold-bg);color:var(--gold)">GROWTH</span><strong>MarketIQ</strong> — Marketing attribution</div>
-<div class="ml-item"><span class="ml-tier" style="background:var(--red-bg);color:var(--red)">ENT</span><strong>VoiceIQ</strong> — Phone + F&I scoring</div>
-<div class="ml-item"><span class="ml-tier" style="background:var(--red-bg);color:var(--red)">ENT</span><strong>MessageIQ</strong> — Text + TCPA</div>
-<div class="ml-item"><span class="ml-tier" style="background:var(--red-bg);color:var(--red)">ENT</span><strong>ServicePulse</strong> — Full fixed ops funnel</div>
-<div class="ml-item"><span class="ml-tier" style="background:var(--red-bg);color:var(--red)">ENT</span><strong>CompIQ</strong> — Compensation optimization</div>
-<div class="ml-item"><span class="ml-tier" style="background:#E8F2FF;color:#2B6CB0">GROUP</span><strong>CommandCenter</strong> — Multi-rooftop intel</div>
-</div>
-</div>
+<section class="sec" id="founder"><div class="w">
+  <div class="founder-grid">
+    <div class="reveal">
+      <div class="sl">THE FOUNDER</div>
+      <div class="fq">Built by someone who <em>sat in every chair.</em></div>
+      <p class="sp">Chris Hall didn't study dealerships from the outside. He ran them. 15+ years across seven franchise brands&nbsp;&mdash; from writing service tickets to managing the P&amp;L.</p>
+      <p class="sp" style="margin-top:12px"><em style="color:var(--accent)">This was not built by engineers guessing what dealers need. It was built by someone who lived it.</em></p>
+    </div>
+    <div class="reveal reveal-d1">
+      <div class="roles-grid">
+        <div class="role-tag"><div class="role-name">Service Advisor</div><div class="role-detail">Nissan</div></div>
+        <div class="role-tag"><div class="role-name">Internet Sales</div><div class="role-detail">Nissan</div></div>
+        <div class="role-tag"><div class="role-name">F&amp;I Manager</div><div class="role-detail">Nissan, CDJR</div></div>
+        <div class="role-tag"><div class="role-name">Sales Manager</div><div class="role-detail">Honda, Hyundai, Mercedes</div></div>
+        <div class="role-tag"><div class="role-name">GSM</div><div class="role-detail">Ford, Crossroads Auto Group</div></div>
+        <div class="role-tag"><div class="role-name">Director of F&amp;I</div><div class="role-detail">CDJR</div></div>
+        <div class="role-tag" style="grid-column:span 2">
+          <div class="role-name">7 Franchise Brands</div>
+          <div class="role-detail">Honda &middot; Mercedes-Benz &middot; Hyundai &middot; Lincoln &middot; Ford &middot; CDJR &middot; Nissan</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div></section>
 
-<!-- 12 AI AGENTS — NEW SECTION in Chris's style -->
-
-<section class="sec"><div class="w">
-<div class="sl reveal">12 AI AGENTS</div>
-<h2>Workers That Never Sleep</h2>
-<p class="sp">Modules watch. Agents <strong>act.</strong> Deployed in 4 waves as the brain calibrates. Agents recommend. Humans decide.</p>
-<div class="agent-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px">
-<div class="agent-card reveal"><div class="agent-tag" style="background:var(--accent-bg);color:var(--accent)">REVENUE</div><div class="agent-name">Lead Response</div><div class="agent-desc">90-second personalized response 24/7. Inventory match, equity, bot detection.</div></div>
-<div class="agent-card reveal"><div class="agent-tag" style="background:var(--accent-bg);color:var(--accent)">REVENUE</div><div class="agent-name">Equity Outreach</div><div class="agent-desc">Nightly DMS scan. Phase 1 soft engage. Coordinates with inventory needs.</div></div>
-<div class="agent-card reveal"><div class="agent-tag" style="background:var(--accent-bg);color:var(--accent)">REVENUE</div><div class="agent-name">Service Reminder</div><div class="agent-desc">Personalized by mileage pattern. Booking links. Coordinates with capacity.</div></div>
-<div class="agent-card reveal"><div class="agent-tag" style="background:var(--accent-bg);color:var(--accent)">REVENUE</div><div class="agent-name">Finance Desk</div><div class="agent-desc">Pre-structures every deal. DealOptima + GuardRail + LenderPulse ready.</div></div>
-<div class="agent-card reveal"><div class="agent-tag" style="background:var(--red-bg);color:var(--red)">PROTECTION</div><div class="agent-name">Inventory Pricing</div><div class="agent-desc">Daily market repricing. Fresh hold, aged reduce, demand increase.</div></div>
-<div class="agent-card reveal"><div class="agent-tag" style="background:var(--red-bg);color:var(--red)">PROTECTION</div><div class="agent-name">CSI Recovery</div><div class="agent-desc">Detects process breakdowns. Proactive recovery before the survey window.</div></div>
-<div class="agent-card reveal"><div class="agent-tag" style="background:var(--red-bg);color:var(--red)">PROTECTION</div><div class="agent-name">Compliance Audit</div><div class="agent-desc">90-day deal pattern monitoring. Compiles evidence. Alerts GM before exposure.</div></div>
-<div class="agent-card reveal"><div class="agent-tag" style="background:var(--red-bg);color:var(--red)">PROTECTION</div><div class="agent-name">Stip Collection</div><div class="agent-desc">Auto stip chase via text + upload links. Prevents $3-5K/deal unwinds.</div></div>
-<div class="agent-card reveal"><div class="agent-tag" style="background:#EEEAFF;color:#6B5CE7">EFFICIENCY</div><div class="agent-name">Service Lane</div><div class="agent-desc">Pre-visit packet: RO history, recalls, warranty, equity, declined services.</div></div>
-<div class="agent-card reveal"><div class="agent-tag" style="background:#EEEAFF;color:#6B5CE7">EFFICIENCY</div><div class="agent-name">Appt Confirmation</div><div class="agent-desc">24hr + 2hr reminders. No-show detection. Reduces no-shows 20-30%.</div></div>
-<div class="agent-card reveal"><div class="agent-tag" style="background:#EEEAFF;color:#6B5CE7">EFFICIENCY</div><div class="agent-name">Review Response</div><div class="agent-desc">Sentiment-matched drafts. Holds for approval. Connects to ReviewIQ trends.</div></div>
-<div class="agent-card reveal"><div class="agent-tag" style="background:#EEEAFF;color:#6B5CE7">EFFICIENCY</div><div class="agent-name">Wholesale Decision</div><div class="agent-desc">At 45 days: hold vs auction math. Breakeven date. Checks for buyer first.</div></div>
-</div>
-</div></section>
-
-<!-- CONSOLIDATION — NEW SECTION, dark like moat -->
-
-<section class="dsec"><div class="w">
-<div class="sl reveal">CONSOLIDATION</div>
-<h2>Replace 9 Tools. Pay Less. Get 10x Smarter.</h2>
-<p class="sp">Most dealers pay <strong>$9,000–$21,000/month</strong> for tools that don't talk to each other. CoreAI replaces them with one brain — for less.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:32px">
-<div class="disp-row"><div class="disp-from">Chat AI</div><div class="disp-cost">$400-800/mo</div><div class="disp-arrow">→</div><div class="disp-to">CoreAI Chat</div></div>
-<div class="disp-row"><div class="disp-from">Phone AI</div><div class="disp-cost">$300-1K/mo</div><div class="disp-arrow">→</div><div class="disp-to">VoiceIQ</div></div>
-<div class="disp-row"><div class="disp-from">Equity Mining</div><div class="disp-cost">$800-2K/mo</div><div class="disp-arrow">→</div><div class="disp-to">EquityPulse</div></div>
-<div class="disp-row"><div class="disp-from">Inv Pricing</div><div class="disp-cost">$1.2-2.5K/mo</div><div class="disp-arrow">→</div><div class="disp-to">InventoryIQ</div></div>
-<div class="disp-row"><div class="disp-from">Review Mgmt</div><div class="disp-cost">$300-1K/mo</div><div class="disp-arrow">→</div><div class="disp-to">ReviewIQ</div></div>
-<div class="disp-row"><div class="disp-from">F&I Training</div><div class="disp-cost">$1.5-3K/mo</div><div class="disp-arrow">→</div><div class="disp-to">DealOptima+</div></div>
-<div class="disp-row"><div class="disp-from">Service Tools</div><div class="disp-cost">$500-1K/mo</div><div class="disp-arrow">→</div><div class="disp-to">ServicePulse</div></div>
-<div class="disp-row"><div class="disp-from">Attribution</div><div class="disp-cost">$800-3K/mo</div><div class="disp-arrow">→</div><div class="disp-to">MarketIQ</div></div>
-<div class="disp-row"><div class="disp-from">CSI Tools</div><div class="disp-cost">$300-800/mo</div><div class="disp-arrow">→</div><div class="disp-to">CSIQ</div></div>
-<div class="disp-row"><div class="disp-from">BDC / Leads</div><div class="disp-cost">$3-8K/mo</div><div class="disp-arrow">→</div><div class="disp-to">Lead Agent</div></div>
-</div>
-<div style="margin-top:20px;padding:18px 24px;background:#00E8C6;border-radius:10px;text-align:center">
-<div style="font-family:Syne,sans-serif;font-weight:700;font-size:15px;color:#0B1421">Current spend: $9–21K/mo → CoreAI Enterprise: $7,999/mo → You SAVE money AND get smarter</div>
-</div>
-</div></section>
-
-<!-- MOAT — UPDATED: 72+ connections, added 2 new -->
-
-<section class="dsec"><div class="w">
-<div class="sl reveal">THE MOAT</div>
-<h2>72+ Connections No Single Tool Can See</h2>
-<p class="sp">These patterns span departments that have <strong>never been connected.</strong> No bolt-on solution replicates this.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:40px">
-<div class="conn reveal"><div class="conn-ar">SERVICE → SALES</div><div><div class="conn-t">Repair exceeds equity — auto-trigger trade</div><div class="conn-v">$53K/mo (14 deals × $3,800)</div></div></div>
-<div class="conn reveal"><div class="conn-ar">WEBSITE → BDC</div><div><div class="conn-t">AI bot detected — value-first response</div><div class="conn-v">$30-60K/mo protected</div></div></div>
-<div class="conn reveal"><div class="conn-ar">F&I → COMPLIANCE</div><div><div class="conn-t">Markup approaching limits — prevent violation</div><div class="conn-v">$45K+ penalties prevented</div></div></div>
-<div class="conn reveal"><div class="conn-ar">PARTS → CSI</div><div><div class="conn-t">Quote delays → declined services → CSI drop</div><div class="conn-v">$10-18K/mo + OEM risk</div></div></div>
-<div class="conn reveal"><div class="conn-ar">F&I WAIT → PVR</div><div><div class="conn-t">Wait over 25 min = PVR decline pattern</div><div class="conn-v">$8-18K/mo cause chain</div></div></div>
-<div class="conn reveal"><div class="conn-ar">TRADE CYCLE → CLOSE</div><div><div class="conn-t">Equity timing = 3x conversion rate</div><div class="conn-v">$15-30K/mo opportunity</div></div></div>
-<div class="conn reveal"><div class="conn-ar">DEALOPTIMA → P&L</div><div><div class="conn-t">Manager stops using tool = PVR leakage</div><div class="conn-v">$450/deal — only CoreAI sees</div></div></div>
-<div class="conn reveal"><div class="conn-ar">PHONE → STAFFING</div><div><div class="conn-t">Peak volume + low answer = lost revenue</div><div class="conn-v">$4K+/week fix</div></div></div>
-</div>
-</div></section>
-
-<!-- PRICING — UPDATED: v2.1 tier contents, honest ROI -->
-
-<section class="sec" id="pricing"><div class="w">
-<div class="sl reveal">INVESTMENT</div>
-<h2>Less Than One Missed Deal Per Month</h2>
-<p class="sp">Even at a conservative 15% recovery, the ROI is <strong>4-11x at every tier.</strong></p>
-<div class="price-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:40px">
-<div class="pr"><div class="pr-name">Starter</div><div class="pr-amt">$1,499</div><div class="pr-per">/month</div><div class="pr-desc">CoreAI + DealOptima + GuardRail + DeskIQ</div><div class="pr-roi">5-11x ROI</div></div>
-<div class="pr"><div class="pr-name">Professional</div><div class="pr-amt">$2,999</div><div class="pr-per">/month</div><div class="pr-desc">+ LenderPulse, Academy, CSIQ, TradeIQ</div><div class="pr-roi">4-7x ROI</div></div>
-<div class="pr pop"><div class="pr-name">Growth</div><div class="pr-amt">$4,999</div><div class="pr-per">/month</div><div class="pr-desc">+ EquityPulse, ReviewIQ, InventoryIQ, MarketIQ</div><div class="pr-roi">4-5x ROI</div></div>
-<div class="pr"><div class="pr-name">Enterprise</div><div class="pr-amt">$7,999</div><div class="pr-per">/month</div><div class="pr-desc">+ VoiceIQ, MessageIQ, ServicePulse, CompIQ + All 12 Agents</div><div class="pr-roi">5-8x ROI</div></div>
-<div class="pr"><div class="pr-name" style="color:var(--red)">Group</div><div class="pr-amt">$5,999</div><div class="pr-per">/store/mo</div><div class="pr-desc">+ $2,999 CommandCenter</div><div class="pr-roi">Cross-rooftop intel</div></div>
-</div>
-</div></section>
-
-<!-- FOUNDER — UNCHANGED except kept exact -->
-
-<section class="sec" id="about"><div class="w">
-<div class="sl reveal">WHY US</div>
-<h2>Built by Someone Who Sat in Every Chair</h2>
-<div class="founder-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px;align-items:center">
-<div>
-<div class="fq">"I'm not another vendor. <em>I'm the last vendor you'll ever need.</em>"</div>
-<div class="fq">"Every month you wait, your competitor gets <em>30 days smarter.</em>"</div>
-<div class="fq">"A <em>consulting company that scales via software.</em>"</div>
-</div>
-<div>
-<p style="font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:14px"><strong style="color:var(--t1)">The Operator — Chris Hall, Founder & CEO.</strong> 15+ years automotive retail. Service. Sales. Internet Director. F&I. Sales Manager. General Sales Manager. Seven franchise brands. Certified AI Builder, Installer, and Manager.</p>
-<p style="font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:14px"><strong style="color:var(--t1)">The Engineer — CTO.</strong> Master's in Engineering — software engineering and electrical engineering. Systems architecture expertise. Complete AI certification portfolio.</p>
-<p style="font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:14px">Not software built by engineers guessing. Intelligence built by someone who <strong style="color:var(--t1)">lived the chaos</strong> — and an engineer who knows how to solve it at scale.</p>
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><span class="brand">Honda</span><span class="brand">Mercedes-Benz</span><span class="brand">Hyundai</span><span class="brand">Lincoln</span><span class="brand">Ford</span><span class="brand">CDJR</span><span class="brand">Nissan</span></div>
-</div>
-</div>
-</div></section>
-
-<!-- CTA — UNCHANGED -->
+<!-- ══════════ CTA ══════════ -->
 
 <section class="cta-sec" id="cta"><div class="w">
-<div class="sl reveal">GET STARTED</div>
-<h2>See What Your Data Is Already Telling You</h2>
-<div class="cta-urg">Every month you wait, your competitor gets 30 days smarter.</div>
-<a href="mailto:chris@dealeroptima.com" class="btn" style="font-size:16px;padding:15px 36px">Book Your 15-Minute Demo →</a>
-<p style="margin-top:16px;color:var(--t4);font-size:13px">No pitch deck. We show you your actual gaps — and what they cost.</p>
+  <div class="sl reveal">FOUNDING PARTNERS</div>
+  <h2 class="reveal">10 Stores. Locked Rate. Forever.</h2>
+  <div class="cta-urg reveal">Our first 10 founding partners lock in 50% off &mdash; permanently. Not a promo. A partnership.</div>
+  <a href="mailto:chris@dealeroptima.com" class="btn reveal" style="font-size:16px;padding:15px 40px">Request a Conversation &rarr;</a>
+  <p style="font-size:13px;color:var(--t4);margin-top:16px" class="reveal">chris@dealeroptima.com &middot; Founding Partner spots are limited.</p>
 </div></section>
 
-<!-- FOOTER — UNCHANGED -->
+<!-- ══════════ FOOTER ══════════ -->
 
 <footer><div class="w">
-<div class="fbot"><span>© 2026 Dealer Optima. All rights reserved.</span><span style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent)">The partner, not the vendor.</span></div>
+  <div class="fbot">
+    <span style="font-family:Syne,sans-serif;font-weight:800;letter-spacing:1px">DEALER OPTIMA</span>
+    <span style="font-style:italic">Intelligence That Compounds.</span>
+    <span>&copy; 2026 Dealer Optima. All rights reserved.</span>
+  </div>
 </div></footer>
 
 <script>
-const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-const nav=document.querySelector('nav');
-window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20)},{passive:true});
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Nav shadow on scroll
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
 </script>
 
 </body>
