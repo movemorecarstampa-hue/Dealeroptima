@@ -363,11 +363,6 @@ content: ‘+’; font-size: 20px; font-weight: 300; color: var(–text-tertiary
 transition: transform 0.2s;
 }
 .faq-item.open .faq-q::after { content: ‘−’; }
-.faq-a {
-max-height: 0; overflow: hidden;
-transition: max-height 0.35s var(–ease), padding 0.35s var(–ease);
-}
-.faq-item.open .faq-a { max-height: 300px; }
 .faq-a-inner {
 padding: 0 24px 20px;
 font-size: 15px; line-height: 1.7; color: var(–text-secondary);
@@ -400,14 +395,134 @@ flex-wrap: wrap; gap: 16px;
 
 /* ═══ ANIMATIONS ═══ */
 @keyframes fadeUp {
-from { opacity: 0; transform: translateY(20px); }
+from { opacity: 0; transform: translateY(28px); }
 to { opacity: 1; transform: translateY(0); }
 }
-.reveal {
-opacity: 0; transform: translateY(24px);
-transition: opacity 0.7s var(–ease), transform 0.7s var(–ease);
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes float {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-8px); }
+}
+@keyframes gentlePulse {
+0%, 100% { transform: scale(1); opacity: 0.9; }
+50% { transform: scale(1.08); opacity: 1; }
+}
+@keyframes slideInLeft {
+from { opacity: 0; transform: translateX(-30px); }
+to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+from { opacity: 0; transform: translateX(30px); }
+to { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+from { opacity: 0; transform: scale(0.92); }
+to { opacity: 1; transform: scale(1); }
+}
+
+/* Hero floating logo */
+.hero-logo svg { animation: float 5s ease-in-out infinite; }
+.hero-logo svg circle:last-child { animation: gentlePulse 3s ease-in-out infinite; }
+
+/* Reveal system — visible by default, animated if JS loads */
+.reveal { opacity: 1; transform: translateY(0); }
+.reveal.animate {
+opacity: 0; transform: translateY(28px);
+transition: opacity 0.8s var(–ease), transform 0.8s var(–ease);
+}
+.reveal.animate.visible { opacity: 1; transform: translateY(0); }
+
+/* Staggered children — cards, steps, etc. */
+.stagger-children.visible > * {
+animation: fadeUp 0.6s var(–ease) both;
+}
+.stagger-children.visible > *:nth-child(1) { animation-delay: 0s; }
+.stagger-children.visible > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-children.visible > *:nth-child(3) { animation-delay: 0.2s; }
+.stagger-children.visible > *:nth-child(4) { animation-delay: 0.3s; }
+.stagger-children.visible > *:nth-child(5) { animation-delay: 0.4s; }
+.stagger-children.visible > *:nth-child(6) { animation-delay: 0.5s; }
+
+/* Stagger children hidden before animation */
+.stagger-children.animate > * { opacity: 0; }
+
+/* Card hover lifts */
+.service-card, .step-card, .problem-card, .op-stat, .faq-item {
+transition: transform 0.35s var(–ease), box-shadow 0.35s var(–ease), border-color 0.35s var(–ease);
+}
+.service-card:hover, .step-card:hover {
+transform: translateY(-4px);
+box-shadow: var(–shadow-lg);
+}
+.op-stat:hover {
+transform: translateY(-2px);
+box-shadow: var(–shadow-md);
+}
+
+/* Briefing mockup slide-in */
+.briefing-mock {
+transition: transform 0.8s var(–ease), opacity 0.8s var(–ease);
+}
+.reveal.animate .briefing-mock {
+opacity: 0; transform: translateX(40px) scale(0.97);
+}
+.reveal.animate.visible .briefing-mock {
+opacity: 1; transform: translateX(0) scale(1);
+}
+
+/* Timeline items stagger */
+.timeline-item {
+transition: opacity 0.5s var(–ease), transform 0.5s var(–ease);
+}
+.reveal.animate .timeline-item { opacity: 0; transform: translateX(20px); }
+.reveal.animate.visible .timeline-item { opacity: 1; transform: translateX(0); }
+.reveal.animate.visible .timeline-item:nth-child(1) { transition-delay: 0.05s; }
+.reveal.animate.visible .timeline-item:nth-child(2) { transition-delay: 0.12s; }
+.reveal.animate.visible .timeline-item:nth-child(3) { transition-delay: 0.19s; }
+.reveal.animate.visible .timeline-item:nth-child(4) { transition-delay: 0.26s; }
+.reveal.animate.visible .timeline-item:nth-child(5) { transition-delay: 0.33s; }
+.reveal.animate.visible .timeline-item:nth-child(6) { transition-delay: 0.40s; }
+
+/* Credential strip subtle entrance */
+.credential {
+transition: opacity 0.5s var(–ease), transform 0.5s var(–ease);
+}
+
+/* Stat number count-up glow */
+.op-stat-number {
+transition: color 0.3s;
+}
+.op-stat:hover .op-stat-number {
+color: var(–accent-deep);
+}
+
+/* Smooth FAQ accordion */
+.faq-a {
+max-height: 0; overflow: hidden;
+transition: max-height 0.4s var(–ease);
+}
+.faq-item.open .faq-a { max-height: 400px; }
+.faq-q {
+transition: color 0.2s, background 0.2s;
+}
+.faq-item.open .faq-q { color: var(–accent); }
+.faq-q:hover { background: var(–bg-section); }
+
+/* Button press effect */
+.btn:active { transform: translateY(1px) scale(0.98); }
+.btn-primary:active {
+box-shadow: 0 1px 2px rgba(12,124,89,0.2);
+}
+
+/* CTA card entrance */
+.cta-card {
+transition: transform 0.8s var(–ease), opacity 0.8s var(–ease);
+}
+.reveal.animate .cta-card { opacity: 0; transform: scale(0.95) translateY(20px); }
+.reveal.animate.visible .cta-card { opacity: 1; transform: scale(1) translateY(0); }
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 900px) {
@@ -568,7 +683,7 @@ transition: opacity 0.7s var(–ease), transform 0.7s var(–ease);
       <h2>Your store isn't broken.<br>That's why it's dangerous.</h2>
       <p class="section-subtitle">The most expensive problem in a dealership is Controlled Decline — dozens of small losses across departments that add up to six figures a month. And it looks like doing okay.</p>
     </div>
-    <div class="problem-grid reveal">
+    <div class="problem-grid reveal stagger-children">
       <div class="problem-card bad">
         <div class="problem-card-label">Without an AI Strategy</div>
         <h3>Every department running blind.</h3>
@@ -606,7 +721,7 @@ transition: opacity 0.7s var(–ease), transform 0.7s var(–ease);
       <h2>Build. Install. Manage.</h2>
       <p class="section-subtitle">I design and deploy complete AI ecosystems for dealerships — using proprietary tools, best-in-class vendors, or both. Whatever gets results.</p>
     </div>
-    <div class="services-grid reveal">
+    <div class="services-grid reveal stagger-children">
       <div class="service-card">
         <div class="service-icon build">🏗️</div>
         <h3>AI Strategy &amp; Build</h3>
@@ -786,7 +901,7 @@ transition: opacity 0.7s var(–ease), transform 0.7s var(–ease);
       <h2>AI that earns trust<br>before it acts</h2>
       <p class="section-subtitle">No AI should run loose in a dealership without someone who's sat in every chair. I build it right, deploy it carefully, and manage it personally.</p>
     </div>
-    <div class="steps-grid reveal">
+    <div class="steps-grid reveal stagger-children">
       <div class="step-card">
         <div class="step-num">1</div>
         <h3>Assess</h3>
@@ -877,13 +992,70 @@ transition: opacity 0.7s var(–ease), transform 0.7s var(–ease);
 </footer>
 
 <script>
+// Nav scroll effect
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+// Reveal system — add .animate class so content is visible if JS fails
 const reveals = document.querySelectorAll('.reveal');
+reveals.forEach(el => el.classList.add('animate'));
+
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
 reveals.forEach(el => observer.observe(el));
+
+// Counting number animation for operator stats
+function animateCount(el, target, suffix = '') {
+  const duration = 1200;
+  const start = performance.now();
+  const isPlus = target.toString().includes('+');
+  const num = parseInt(target);
+
+  function tick(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(eased * num);
+    el.textContent = current + (isPlus ? '+' : '') + suffix;
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const text = el.textContent.trim();
+      const num = parseInt(text);
+      if (!isNaN(num)) {
+        const suffix = text.includes('+') ? '+' : '';
+        el.textContent = '0' + suffix;
+        animateCount(el, num, suffix.replace('+',''));
+      }
+      statObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.op-stat-number').forEach(el => statObserver.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
 </script>
 
 </body>
