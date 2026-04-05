@@ -4,437 +4,886 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light dark">
-<title>Dealer Optima — Intelligence That Compounds</title>
-<meta name="description" content="CoreAI by Dealer Optima. The private AI brain for your dealership. Integrates with everything. Replaces nothing.">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<title>Dealer Optima — The AI Car Guy</title>
+<meta name="description" content="Chris Hall builds, installs, and manages AI for automotive dealerships. 15 years of operations expertise. Certified AI Builder, Installer, Manager.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --bg:#FFFFFF;--bg2:#F6F8FA;--card:#FFFFFF;--card-b:1.5px solid #E0E5EC;
-  --border:#E0E5EC;--t1:#111111;--t2:#444444;--t3:#666666;--t4:#888888;
-  --accent:#008F7A;--accent-bg:#EDF9F6;--accent-b:#B8E8DC;
-  --red:#C93545;--red-bg:#FFF2F4;--red-b:#FFD0D6;
-  --gold:#996D00;--gold-bg:#FFFBF0;--gold-b:#F0E0B8;
-  --dark-card:#0B1421;--dark-t1:#F0F4F8;--dark-t2:#C0CCDB;--dark-t3:#8899AD;
-  --teal-bright:#00E8C6;--gold-bright:#F5B731;--coral-bright:#FF5C72;
-  --nav-bg:rgba(255,255,255,0.93);--nav-border:#E0E5EC;
-  --cta-bg:#F6FBF9;--foot-bg:#F8F9FB;
+  --white: #ffffff;
+  --bg: #FBFBFD;
+  --bg-section: #F5F6F8;
+  --bg-card: #ffffff;
+  --border: #E2E4E9;
+  --border-light: #EDEEF1;
+  --text: #0F1114;
+  --text-mid: #3D4248;
+  --text-secondary: #6B7280;
+  --text-tertiary: #9CA3AF;
+  --accent: #0C7C59;
+  --accent-deep: #065E43;
+  --accent-soft: #E6F4EE;
+  --accent-border: #B8DFD0;
+  --accent-mid: #3AAFA9;
+  --red-soft: #FEF2F2;
+  --red-text: #B91C1C;
+  --red-border: #FECACA;
+  --amber-soft: #FFFBEB;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.03);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.07), 0 2px 6px rgba(0,0,0,0.03);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
-@media(prefers-color-scheme:dark){:root{
-  --bg:#0B1421;--bg2:#111D30;--card:#111D30;--card-b:1.5px solid rgba(255,255,255,0.08);
-  --border:rgba(255,255,255,0.08);--t1:#F0F4F8;--t2:#C0CCDB;--t3:#8899AD;--t4:#6B7F99;
-  --accent:#00E8C6;--accent-bg:rgba(0,232,198,0.08);--accent-b:rgba(0,232,198,0.18);
-  --red:#FF5C72;--red-bg:rgba(255,92,114,0.08);--red-b:rgba(255,92,114,0.18);
-  --gold:#F5B731;--gold-bg:rgba(245,183,49,0.06);--gold-b:rgba(245,183,49,0.15);
-  --nav-bg:rgba(11,20,33,0.9);--nav-border:rgba(255,255,255,0.06);
-  --cta-bg:#0F1929;--foot-bg:#0A1018;
-}}
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.65; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 100px 0; }
+.section-alt { background: var(--bg-section); }
 
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:‘DM Sans’,sans-serif;background:var(–bg);color:var(–t1);line-height:1.6}
-.w{max-width:1080px;margin:0 auto;padding:0 28px}
-
-/* Nav */
-nav{position:sticky;top:0;z-index:100;background:var(–nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(–nav-border);padding:13px 0;transition:box-shadow .3s}
-nav.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.06)}
-nav .w{display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-t{font-family:Syne,sans-serif;font-weight:800;font-size:15px;color:var(–t1)}
-.nlinks{display:flex;gap:24px;align-items:center}
-.nlinks a{color:var(–t3);text-decoration:none;font-size:13px;font-weight:500}
-.nlinks a:hover{color:var(–t1)}
-.btn{background:var(–accent);color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:‘DM Sans’,sans-serif;transition:transform .2s,box-shadow .2s}
-@media(prefers-color-scheme:dark){.btn{background:#00E8C6;color:#0B1421}}
-.btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,143,122,.25)}
-.btn-o{border:1.5px solid var(–border);color:var(–t1);padding:9px 24px;border-radius:8px;font-weight:600;font-size:13px;text-decoration:none;background:transparent;transition:all .2s}
-.btn-o:hover{border-color:var(–accent);color:var(–accent);transform:translateY(-1px)}
-
-/* Section basics */
-.sec{padding:72px 0;border-top:1px solid var(–border)}
-.sl{font-family:monospace;font-size:11px;font-weight:700;letter-spacing:2px;color:var(–accent);text-transform:uppercase;margin-bottom:10px}
-h2{font-family:Syne,sans-serif;font-size:clamp(24px,3.8vw,38px);font-weight:800;letter-spacing:-1.2px;line-height:1.08;margin-bottom:12px;color:var(–t1)}
-.sp{font-size:15px;color:var(–t2);max-width:520px;line-height:1.7}
-.sp strong{color:var(–t1)}
-
-/* Dark section */
-.dsec{background:var(–dark-card);color:var(–dark-t1);padding:72px 0;border:none}
-.dsec .sl{color:#00E8C6}
-.dsec h2{color:var(–dark-t1)}
-.dsec .sp{color:var(–dark-t2)}
-.dsec .sp strong{color:var(–dark-t1)}
-
-/* Department cards */
-.dept{background:var(–card);border:var(–card-b);border-radius:12px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;transition:transform .25s,box-shadow .25s,border-color .25s}
-.dept:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:var(–accent)}
-.dept-name{font-family:Syne,sans-serif;font-weight:800;font-size:15px;color:var(–t1)}
-.dept-desc{font-size:12px;color:var(–t2);margin-top:3px;line-height:1.5}
-.dept-amt{font-family:monospace;font-size:20px;font-weight:800;color:var(–red);white-space:nowrap}
-.dept-total{margin-top:20px;background:var(–accent-bg);border:2px solid var(–accent-b);border-radius:14px;padding:32px;text-align:center;transition:transform .3s}
-.dept-total:hover{transform:scale(1.01)}
-.dept-total-n{font-family:monospace;font-size:clamp(26px,4vw,42px);font-weight:800;color:var(–accent)}
-.dept-total-sub{font-size:14px;color:var(–t2);margin-top:6px}
-.dept-total-note{font-size:13px;color:var(–t4);margin-top:10px;font-style:italic}
-
-/* Briefing mock */
-.brief-mock{background:#0B1421;border-radius:16px;padding:28px 24px;color:#F0F4F8;font-size:13px;animation:subtleGlow 4s ease-in-out infinite;transition:transform .3s}
-.brief-mock:hover{transform:scale(1.01)}
-.brief-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08)}
-.brief-label{font-family:monospace;font-size:10px;color:#00E8C6;letter-spacing:2px;text-transform:uppercase}
-.brief-time{font-family:monospace;font-size:11px;color:#6B7F99}
-.brief-alert{background:#1A2940;border-radius:8px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;color:#C0CCDB;margin-bottom:8px;font-size:13px;line-height:1.5}
-.brief-alert:last-child{margin-bottom:0}
-.brief-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
-.brief-dot.urgent{background:#FF5C72;box-shadow:0 0 8px rgba(255,92,114,0.4)}
-.brief-dot.action{background:#00E8C6;box-shadow:0 0 8px rgba(0,232,198,0.4)}
-.brief-dot.insight{background:#A78BFA;box-shadow:0 0 8px rgba(167,139,250,0.3)}
-.brief-text strong{color:#F0F4F8}
-.brief-amt{font-family:monospace;font-size:12px;color:#F5B731;margin-top:4px;font-weight:700;display:block}
-
-/* Steps */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
-.step{background:var(–bg2);border:1px solid var(–border);border-radius:14px;padding:28px 22px;text-align:center;transition:transform .25s,box-shadow .25s}
-.step:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
-.step-num{font-family:monospace;font-size:32px;font-weight:800;color:var(–accent);margin-bottom:8px}
-.step h3{font-size:16px;font-weight:800;color:var(–t1);margin-bottom:6px}
-.step p{font-size:13px;color:var(–t2);line-height:1.6}
-
-/* Golden rule */
-.golden-box{background:var(–accent-bg);border:2px solid var(–accent-b);border-radius:16px;padding:48px 40px;text-align:center;margin-top:40px}
-.golden-box h2 span{color:var(–accent)}
-.golden-box p{font-size:16px;color:var(–t2);max-width:560px;margin:0 auto;line-height:1.7}
-
-/* Security cards */
-.sec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
-.sec-card{background:var(–card);border:var(–card-b);border-radius:12px;padding:28px 22px;text-align:center;transition:transform .25s,box-shadow .25s}
-.sec-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
-.sec-card .ico{font-size:28px;margin-bottom:14px;display:block}
-.sec-card h4{font-size:16px;font-weight:800;color:var(–t1);margin-bottom:6px}
-.sec-card p{font-size:13px;color:var(–t2);line-height:1.6}
-
-/* Displacement */
-.disp-row{display:flex;align-items:center;gap:12px;padding:14px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;margin-bottom:8px;flex-wrap:wrap}
-.disp-from{font-size:13px;color:#8899AD;min-width:130px}
-.disp-cost{font-family:monospace;font-size:13px;color:#FF5C72;font-weight:700;min-width:120px}
-.disp-arrow{color:#00E8C6;font-size:16px}
-.disp-to{font-size:13px;color:#00E8C6;font-weight:700}
-
-/* Founder */
-.founder-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.fq{font-size:20px;font-weight:700;line-height:1.35;padding-left:18px;border-left:3px solid var(–accent);margin-bottom:18px;color:var(–t1)}
-.fq em{color:var(–accent);font-style:normal}
-.roles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.role-tag{background:var(–bg2);border:1px solid var(–border);border-radius:8px;padding:14px 16px;text-align:center;transition:all .25s}
-.role-tag:hover{border-color:var(–accent);transform:translateY(-2px)}
-.role-name{font-size:14px;font-weight:800;color:var(–t1);margin-bottom:2px}
-.role-detail{font-size:11px;color:var(–t3)}
-
-/* CTA */
-.cta-sec{padding:80px 0;border-top:1px solid var(–border);text-align:center;background:var(–cta-bg)}
-.cta-urg{font-family:monospace;font-size:14px;color:var(–gold);margin:16px 0 28px;font-weight:600}
-
-/* Footer */
-footer{border-top:1px solid var(–border);padding:36px 0 28px;background:var(–foot-bg)}
-.fbot{display:flex;justify-content:space-between;font-size:11px;color:var(–t4);flex-wrap:wrap;gap:8px}
-
-/* Callout */
-.callout{background:var(–accent-bg);border-left:3px solid var(–accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:13px;color:var(–t2);line-height:1.6;margin:14px 0}
-.callout strong{color:var(–t1)}
-
-/* Animations */
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes subtleGlow{0%,100%{box-shadow:0 0 20px rgba(0,143,122,0.08)}50%{box-shadow:0 0 40px rgba(0,143,122,0.15)}}
-.hero-enter{animation:fadeUp .8s ease-out both}
-.hero-enter-d1{animation-delay:.1s}
-.hero-enter-d2{animation-delay:.25s}
-.hero-enter-d3{animation-delay:.4s}
-.hero-enter-d4{animation-delay:.55s}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-d1{transition-delay:.1s}
-.reveal-d2{transition-delay:.2s}
-
-/* Responsive */
-@media(max-width:768px){
-.nlinks span{display:none}
-.w{padding:0 20px}
-.founder-grid{grid-template-columns:1fr!important}
-.sec-grid{grid-template-columns:1fr!important}
-.steps{grid-template-columns:1fr 1fr}
+h1, h2, h3 { font-family: var(–font-display); font-weight: 500; letter-spacing: -0.01em; }
+h1 { font-size: clamp(42px, 6vw, 72px); line-height: 1.08; }
+h2 { font-size: clamp(32px, 4vw, 48px); line-height: 1.15; }
+h3 { font-size: 22px; line-height: 1.35; }
+.section-label {
+font-family: var(–font-body);
+font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+color: var(–accent); margin-bottom: 16px;
 }
-@media(max-width:500px){
-.hero-ctas{flex-direction:column}
-.hero-ctas a{text-align:center}
-.steps{grid-template-columns:1fr}
-.roles-grid{grid-template-columns:1fr}
+.section-subtitle {
+font-size: 18px; line-height: 1.7; color: var(–text-secondary); max-width: 620px;
+}
+.section-header { margin-bottom: 64px; }
+.section-header.center { text-align: center; }
+.section-header.center .section-subtitle { margin: 16px auto 0; }
+
+.btn {
+display: inline-flex; align-items: center; gap: 8px;
+padding: 14px 28px; border-radius: 10px;
+font-family: var(–font-body); font-size: 15px; font-weight: 600;
+border: none; cursor: pointer; transition: all 0.25s var(–ease);
+}
+.btn-primary {
+background: var(–accent); color: #fff;
+box-shadow: 0 1px 3px rgba(12,124,89,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.btn-primary:hover {
+background: var(–accent-deep); transform: translateY(-1px);
+box-shadow: 0 4px 16px rgba(12,124,89,0.25);
+}
+.btn-outline {
+background: var(–white); color: var(–text);
+border: 1px solid var(–border); box-shadow: var(–shadow-xs);
+}
+.btn-outline:hover { background: var(–bg-section); border-color: var(–text-tertiary); }
+.btn-sm { padding: 10px 20px; font-size: 14px; border-radius: 8px; }
+.btn-arrow::after { content: ‘→’; transition: transform 0.2s var(–ease); }
+.btn-arrow:hover::after { transform: translateX(3px); }
+
+/* ═══ NAV ═══ */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+padding: 0 24px;
+background: rgba(251,251,253,0.85);
+backdrop-filter: blur(20px) saturate(180%);
+-webkit-backdrop-filter: blur(20px) saturate(180%);
+border-bottom: 1px solid var(–border-light);
+transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: var(–shadow-sm); }
+.nav-inner {
+max-width: 1140px; margin: 0 auto;
+display: flex; align-items: center; justify-content: space-between;
+height: 68px;
+}
+.logo {
+display: flex; align-items: center; gap: 11px;
+font-weight: 700; font-size: 17px; color: var(–text);
+letter-spacing: -0.01em;
+}
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(–text-secondary); transition: color 0.2s; }
+.nav-links a:hover { color: var(–text); }
+.nav-cta { display: flex; align-items: center; gap: 12px; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; color: var(–text); }
+
+/* ═══ HERO ═══ */
+.hero {
+padding: 164px 24px 100px;
+text-align: center; position: relative;
+}
+.hero::before {
+content: ‘’;
+position: absolute; top: 64px; left: 50%; transform: translateX(-50%);
+width: 100%; max-width: 900px; height: 500px;
+background: radial-gradient(ellipse at 50% 0%, var(–accent-soft) 0%, transparent 65%);
+opacity: 0.6; pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-logo {
+display: flex; align-items: center; justify-content: center;
+margin-bottom: 40px;
+animation: fadeUp 0.7s var(–ease) both;
+}
+.hero-badge {
+display: inline-flex; align-items: center; gap: 8px;
+padding: 6px 16px 6px 10px;
+border-radius: 100px;
+background: var(–accent-soft); border: 1px solid var(–accent-border);
+font-size: 13px; font-weight: 600; color: var(–accent);
+margin-bottom: 32px;
+animation: fadeUp 0.7s var(–ease) 0.06s both;
+}
+.hero h1 {
+max-width: 820px; margin: 0 auto 24px;
+animation: fadeUp 0.7s var(–ease) 0.12s both;
+}
+.hero h1 em { font-style: italic; color: var(–accent); }
+.hero-sub {
+font-size: 19px; line-height: 1.7; color: var(–text-secondary);
+max-width: 600px; margin: 0 auto 44px;
+animation: fadeUp 0.7s var(–ease) 0.18s both;
+}
+.hero-ctas {
+display: flex; align-items: center; justify-content: center; gap: 14px;
+flex-wrap: wrap;
+animation: fadeUp 0.7s var(–ease) 0.24s both;
+}
+
+/* ═══ CREDENTIAL STRIP ═══ */
+.credential-strip {
+padding: 40px 24px;
+border-top: 1px solid var(–border-light);
+border-bottom: 1px solid var(–border-light);
+background: var(–white);
+}
+.credential-inner {
+max-width: 1140px; margin: 0 auto;
+display: flex; align-items: center; justify-content: center; gap: 48px;
+flex-wrap: wrap;
+}
+.credential {
+display: flex; align-items: center; gap: 12px;
+font-size: 14px; font-weight: 500; color: var(–text-mid);
+}
+.credential-icon {
+width: 36px; height: 36px; border-radius: 8px;
+display: flex; align-items: center; justify-content: center; font-size: 16px;
+}
+.credential-icon.green { background: var(–accent-soft); }
+.credential-icon.amber { background: var(–amber-soft); }
+.credential strong { color: var(–text); font-weight: 700; }
+
+/* ═══ PROBLEM ═══ */
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.problem-card {
+padding: 40px; border-radius: var(–radius-lg);
+border: 1px solid var(–border); background: var(–bg-card);
+}
+.problem-card.bad { border-color: var(–red-border); background: var(–red-soft); }
+.problem-card.good { border-color: var(–accent-border); background: var(–accent-soft); }
+.problem-card-label {
+font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+text-transform: uppercase; margin-bottom: 20px;
+}
+.problem-card.bad .problem-card-label { color: var(–red-text); }
+.problem-card.good .problem-card-label { color: var(–accent); }
+.problem-card h3 { margin-bottom: 16px; font-size: 20px; }
+.problem-card p { font-size: 15px; line-height: 1.7; color: var(–text-mid); }
+.problem-card ul {
+list-style: none; margin-top: 20px;
+display: flex; flex-direction: column; gap: 12px;
+}
+.problem-card li {
+font-size: 14px; line-height: 1.6; color: var(–text-mid);
+padding-left: 24px; position: relative;
+}
+.problem-card li::before { position: absolute; left: 0; top: 1px; font-size: 14px; }
+.problem-card.bad li::before { content: ‘✕’; color: var(–red-text); font-weight: 700; }
+.problem-card.good li::before { content: ‘✓’; color: var(–accent); font-weight: 700; }
+
+/* ═══ SERVICES ═══ */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card {
+padding: 36px 32px; border-radius: var(–radius-lg);
+background: var(–bg-card); border: 1px solid var(–border);
+transition: all 0.3s var(–ease);
+}
+.service-card:hover {
+border-color: var(–accent-border); box-shadow: var(–shadow-md);
+transform: translateY(-2px);
+}
+.service-icon {
+width: 48px; height: 48px; border-radius: 12px;
+display: flex; align-items: center; justify-content: center;
+font-size: 22px; margin-bottom: 24px;
+}
+.service-icon.build { background: var(–accent-soft); }
+.service-icon.install { background: #EEF2FF; }
+.service-icon.manage { background: #FEF3C7; }
+.service-card h3 { margin-bottom: 12px; font-size: 20px; }
+.service-card p { font-size: 15px; color: var(–text-secondary); line-height: 1.7; }
+.service-tag {
+display: inline-block; margin-top: 20px;
+padding: 4px 12px; border-radius: 6px;
+font-size: 12px; font-weight: 600;
+background: var(–bg-section); color: var(–text-secondary);
+}
+
+/* ═══ WHAT YOU GET ═══ */
+.results-grid {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 60px; align-items: center;
+}
+.results-features { display: flex; flex-direction: column; gap: 28px; }
+.results-feature { display: flex; gap: 16px; }
+.rf-marker {
+width: 40px; height: 40px; border-radius: 10px;
+background: var(–accent-soft);
+display: flex; align-items: center; justify-content: center;
+font-size: 18px; flex-shrink: 0;
+}
+.rf-text h4 { font-family: var(–font-body); font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.rf-text p { font-size: 14px; color: var(–text-secondary); line-height: 1.6; }
+
+/* Briefing mockup */
+.briefing-mock {
+background: var(–white); border-radius: var(–radius-lg);
+border: 1px solid var(–border); box-shadow: var(–shadow-lg); overflow: hidden;
+}
+.briefing-header {
+padding: 20px 24px; background: var(–text); color: #fff;
+display: flex; align-items: center; justify-content: space-between;
+}
+.briefing-header-left { display: flex; align-items: center; gap: 10px; }
+.briefing-header span { font-size: 14px; font-weight: 600; }
+.briefing-header small { font-size: 12px; opacity: 0.6; }
+.briefing-body { padding: 24px; }
+.briefing-score {
+display: flex; align-items: center; gap: 16px;
+padding-bottom: 20px; margin-bottom: 20px;
+border-bottom: 1px solid var(–border-light);
+}
+.score-circle {
+width: 56px; height: 56px; border-radius: 50%;
+border: 3px solid var(–accent);
+display: flex; align-items: center; justify-content: center;
+font-size: 20px; font-weight: 700; color: var(–accent);
+}
+.score-meta { font-size: 13px; color: var(–text-secondary); line-height: 1.5; }
+.score-meta strong { color: var(–text); display: block; font-size: 15px; }
+.briefing-item {
+padding: 14px 0; border-bottom: 1px solid var(–border-light);
+display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+}
+.briefing-item:last-child { border-bottom: none; padding-bottom: 0; }
+.briefing-item-text { font-size: 13px; color: var(–text-mid); line-height: 1.5; flex: 1; }
+.briefing-item-text strong { color: var(–text); }
+.briefing-dollar { font-size: 14px; font-weight: 700; white-space: nowrap; }
+.briefing-dollar.loss { color: var(–red-text); }
+.briefing-dollar.gain { color: var(–accent); }
+
+/* ═══ OPERATOR ═══ */
+.operator-layout {
+display: grid; grid-template-columns: 1fr 1.2fr;
+gap: 60px; align-items: center;
+}
+.operator-stats {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 16px; margin-top: 36px;
+}
+.op-stat {
+padding: 20px; border-radius: var(–radius);
+background: var(–bg-section); border: 1px solid var(–border-light);
+}
+.op-stat-number {
+font-family: var(–font-display);
+font-size: 32px; font-weight: 600; color: var(–accent); line-height: 1;
+}
+.op-stat-label { font-size: 13px; color: var(–text-secondary); margin-top: 6px; }
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+content: ‘’; position: absolute; left: 7px; top: 8px; bottom: 8px;
+width: 2px; background: var(–border);
+}
+.timeline-item { position: relative; padding-bottom: 28px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::before {
+content: ‘’; position: absolute; left: -32px; top: 6px;
+width: 16px; height: 16px; border-radius: 50%;
+background: var(–white); border: 3px solid var(–accent); z-index: 1;
+}
+.timeline-role { font-size: 15px; font-weight: 600; color: var(–text); }
+.timeline-detail { font-size: 13px; color: var(–text-secondary); margin-top: 2px; }
+
+/* ═══ HOW IT WORKS ═══ */
+.steps-grid {
+display: grid; grid-template-columns: repeat(4, 1fr);
+gap: 20px;
+}
+.step-card {
+text-align: center; padding: 36px 24px;
+border-radius: var(–radius-lg);
+background: var(–bg-card); border: 1px solid var(–border);
+}
+.step-num {
+width: 36px; height: 36px; border-radius: 50%;
+background: var(–accent); color: #fff;
+display: inline-flex; align-items: center; justify-content: center;
+font-size: 15px; font-weight: 700; margin-bottom: 20px;
+}
+.step-card h3 { font-size: 18px; margin-bottom: 10px; }
+.step-card p { font-size: 14px; color: var(–text-secondary); line-height: 1.6; }
+
+/* ═══ FAQ ═══ */
+.faq-list {
+max-width: 720px; margin: 0 auto;
+display: flex; flex-direction: column; gap: 12px;
+}
+.faq-item {
+border: 1px solid var(–border); border-radius: var(–radius);
+background: var(–bg-card); overflow: hidden;
+}
+.faq-q {
+width: 100%; padding: 20px 24px;
+background: none; border: none; cursor: pointer;
+font-family: var(–font-body); font-size: 16px; font-weight: 600;
+color: var(–text); text-align: left;
+display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.faq-q::after {
+content: ‘+’; font-size: 20px; font-weight: 300; color: var(–text-tertiary);
+transition: transform 0.2s;
+}
+.faq-item.open .faq-q::after { content: ‘−’; }
+.faq-a {
+max-height: 0; overflow: hidden;
+transition: max-height 0.35s var(–ease), padding 0.35s var(–ease);
+}
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a-inner {
+padding: 0 24px 20px;
+font-size: 15px; line-height: 1.7; color: var(–text-secondary);
+}
+
+/* ═══ CTA ═══ */
+.cta-section { padding: 100px 24px; text-align: center; }
+.cta-card {
+max-width: 720px; margin: 0 auto; padding: 64px 48px;
+border-radius: var(–radius-lg); background: var(–text); color: #fff;
+}
+.cta-card h2 { color: #fff; margin-bottom: 16px; }
+.cta-card p { color: rgba(255,255,255,0.65); font-size: 17px; margin-bottom: 36px; line-height: 1.7; }
+.cta-card .btn-primary { background: #fff; color: var(–text); box-shadow: none; }
+.cta-card .btn-primary:hover { background: #f0f0f0; }
+
+/* ═══ FOOTER ═══ */
+footer {
+padding: 48px 24px; border-top: 1px solid var(–border-light);
+}
+.footer-inner {
+max-width: 1140px; margin: 0 auto;
+display: flex; align-items: center; justify-content: space-between;
+flex-wrap: wrap; gap: 16px;
+}
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: var(–text-secondary); transition: color 0.2s; }
+.footer-links a:hover { color: var(–text); }
+.footer-copy { font-size: 13px; color: var(–text-tertiary); }
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+opacity: 0; transform: translateY(24px);
+transition: opacity 0.7s var(–ease), transform 0.7s var(–ease);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 900px) {
+.nav-links { display: none; }
+.hamburger { display: block; }
+.problem-grid { grid-template-columns: 1fr; }
+.services-grid { grid-template-columns: 1fr; }
+.results-grid { grid-template-columns: 1fr; gap: 40px; }
+.operator-layout { grid-template-columns: 1fr; gap: 40px; }
+.steps-grid { grid-template-columns: 1fr 1fr; }
+.credential-inner { gap: 24px; }
+.hero { padding: 140px 24px 80px; }
+}
+@media (max-width: 600px) {
+.steps-grid { grid-template-columns: 1fr; }
+.operator-stats { grid-template-columns: 1fr; }
+.hero-ctas { flex-direction: column; }
+.hero-ctas .btn { width: 100%; justify-content: center; }
+.footer-inner { flex-direction: column; text-align: center; }
+.cta-card { padding: 48px 28px; }
+.nav-cta .btn-primary { display: none; }
+.hero-logo svg { width: 200px; height: auto; }
 }
 </style>
 
 </head>
 <body>
 
-<!-- ══════════ NAV ══════════ -->
+<!-- ═══════════════ LOGO SVG ═══════════════ -->
 
-<nav><div class="w">
-  <a href="#" class="logo">
-    <svg width="26" height="26" viewBox="0 0 36 36" fill="none">
-      <circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="1.5" opacity="0.3" style="color:var(--accent)"/>
-      <line x1="12" y1="12" x2="18" y2="18" stroke="currentColor" stroke-width="1" opacity="0.5" style="color:var(--accent)"/>
-      <line x1="24" y1="12" x2="18" y2="18" stroke="currentColor" stroke-width="1" opacity="0.5" style="color:var(--accent)"/>
-      <line x1="12" y1="24" x2="18" y2="18" stroke="currentColor" stroke-width="1" opacity="0.5" style="color:var(--accent)"/>
-      <line x1="24" y1="24" x2="18" y2="18" stroke="currentColor" stroke-width="1" opacity="0.5" style="color:var(--accent)"/>
-      <line x1="12" y1="12" x2="24" y2="12" stroke="currentColor" stroke-width="0.8" opacity="0.3" style="color:var(--accent)"/>
-      <line x1="12" y1="24" x2="24" y2="24" stroke="currentColor" stroke-width="0.8" opacity="0.3" style="color:var(--accent)"/>
-      <line x1="12" y1="12" x2="12" y2="24" stroke="currentColor" stroke-width="0.8" opacity="0.3" style="color:var(--accent)"/>
-      <line x1="24" y1="12" x2="24" y2="24" stroke="currentColor" stroke-width="0.8" opacity="0.3" style="color:var(--accent)"/>
-      <line x1="18" y1="18" x2="18" y2="6" stroke="currentColor" stroke-width="1" opacity="0.4" style="color:var(--accent)"/>
-      <line x1="18" y1="18" x2="18" y2="30" stroke="currentColor" stroke-width="1" opacity="0.4" style="color:var(--accent)"/>
-      <line x1="18" y1="18" x2="6" y2="18" stroke="currentColor" stroke-width="1" opacity="0.4" style="color:var(--accent)"/>
-      <line x1="18" y1="18" x2="30" y2="18" stroke="currentColor" stroke-width="1" opacity="0.4" style="color:var(--accent)"/>
-      <circle cx="12" cy="12" r="2.5" fill="currentColor" opacity="0.7" style="color:var(--accent)"/>
-      <circle cx="24" cy="12" r="2.5" fill="currentColor" opacity="0.7" style="color:var(--accent)"/>
-      <circle cx="12" cy="24" r="2.5" fill="currentColor" opacity="0.7" style="color:var(--accent)"/>
-      <circle cx="24" cy="24" r="2.5" fill="currentColor" opacity="0.7" style="color:var(--accent)"/>
-      <circle cx="18" cy="6" r="2" fill="currentColor" opacity="0.5" style="color:var(--accent)"/>
-      <circle cx="18" cy="30" r="2" fill="currentColor" opacity="0.5" style="color:var(--accent)"/>
-      <circle cx="6" cy="18" r="2" fill="currentColor" opacity="0.5" style="color:var(--accent)"/>
-      <circle cx="30" cy="18" r="2" fill="currentColor" opacity="0.5" style="color:var(--accent)"/>
-      <circle cx="18" cy="18" r="4" fill="currentColor" style="color:var(--accent)"/>
-    </svg>
-    <span class="logo-t">DEALER OPTIMA</span>
-  </a>
-  <div class="nlinks">
-    <span><a href="#money">The Math</a></span>
-    <span><a href="#briefing">The Briefing</a></span>
-    <span><a href="#how">How It Works</a></span>
-    <span><a href="#founder">About</a></span>
-    <a href="#cta" class="btn">Book a Demo</a>
-  </div>
-</div></nav>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+  <defs>
+    <symbol id="do-logo" viewBox="0 0 40 40">
+      <polygon points="20,3 34.7,11.5 34.7,28.5 20,37 5.3,28.5 5.3,11.5" fill="none" stroke="#B8DFD0" stroke-width="1.5" stroke-linejoin="round" opacity="0.5"/>
+      <line x1="20" y1="20" x2="20" y2="3" stroke="#3AAFA9" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="20" y1="20" x2="34.7" y2="11.5" stroke="#3AAFA9" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="20" y1="20" x2="34.7" y2="28.5" stroke="#3AAFA9" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="20" y1="20" x2="20" y2="37" stroke="#3AAFA9" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="20" y1="20" x2="5.3" y2="28.5" stroke="#3AAFA9" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="20" y1="20" x2="5.3" y2="11.5" stroke="#3AAFA9" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="20" cy="3" r="2.5" fill="#0C7C59"/>
+      <circle cx="34.7" cy="11.5" r="2.5" fill="#0C7C59"/>
+      <circle cx="34.7" cy="28.5" r="2.5" fill="#0C7C59"/>
+      <circle cx="20" cy="37" r="2.5" fill="#0C7C59"/>
+      <circle cx="5.3" cy="28.5" r="2.5" fill="#0C7C59"/>
+      <circle cx="5.3" cy="11.5" r="2.5" fill="#0C7C59"/>
+      <circle cx="27.4" cy="7.2" r="1.5" fill="#3AAFA9" opacity="0.6"/>
+      <circle cx="34.7" cy="20" r="1.5" fill="#3AAFA9" opacity="0.6"/>
+      <circle cx="27.4" cy="32.8" r="1.5" fill="#3AAFA9" opacity="0.6"/>
+      <circle cx="12.6" cy="32.8" r="1.5" fill="#3AAFA9" opacity="0.6"/>
+      <circle cx="5.3" cy="20" r="1.5" fill="#3AAFA9" opacity="0.6"/>
+      <circle cx="12.6" cy="7.2" r="1.5" fill="#3AAFA9" opacity="0.6"/>
+      <circle cx="20" cy="20" r="5.5" fill="#0C7C59"/>
+      <circle cx="20" cy="20" r="3" fill="#3AAFA9"/>
+    </symbol>
+  </defs>
+</svg>
 
-<!-- ══════════ HERO ══════════ -->
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
 
-<section style="padding:72px 0 56px;border-bottom:1px solid var(--border)"><div class="w">
-  <div class="sl hero-enter hero-enter-d1">THE PRIVATE AI BRAIN FOR YOUR DEALERSHIP</div>
-  <h1 style="font-family:Syne,sans-serif;font-size:clamp(30px,5.5vw,54px);font-weight:800;line-height:1.06;letter-spacing:-2px;margin-bottom:18px;max-width:700px;color:var(--t1)" class="hero-enter hero-enter-d2">
-    Your dealership is leaking <span style="color:var(--accent)">$175,000+ every month.</span><br>
-    <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400">You just can't see it yet.</span>
-  </h1>
-  <p style="font-size:17px;color:var(--t2);line-height:1.7;max-width:540px;margin-bottom:28px" class="hero-enter hero-enter-d3">
-    It's not one big problem. It's <strong style="color:var(--t1)">hundreds of small ones</strong> across every department&nbsp;&mdash; sales, F&amp;I, service, BDC, inventory. No single tool sees them all. <strong style="color:var(--t1)">CoreAI does.</strong> One brain. Every department. Every dollar.
-  </p>
-  <div class="hero-ctas hero-enter hero-enter-d4" style="display:flex;gap:12px;flex-wrap:wrap">
-    <a href="#cta" class="btn" style="font-size:16px;padding:15px 36px">See What You're Missing &rarr;</a>
-    <a href="#money" class="btn-o">Show Me the Math</a>
-  </div>
-</div></section>
-
-<!-- ══════════ THE MATH ══════════ -->
-
-<section class="sec" id="money"><div class="w">
-  <div class="sl reveal">LET'S DO THE MATH &mdash; BASED ON A 130-UNIT STORE</div>
-  <h2>Here's Where Your Money Is Going</h2>
-  <p class="sp">Calculated against a <strong>real 130-unit store</strong> using defensible formulas. We calculate your specific numbers in the first meeting.</p>
-
-  <div style="display:grid;gap:14px;margin-top:40px">
-    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">PVR Gap (F&amp;I)</div><div class="dept-desc">Target PVR vs actual &times; 130 units &times; 65% realistic Year 1 closure rate.</div></div><div class="dept-amt">$33,800</div></div>
-    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Aged Inventory + Wholesale</div><div class="dept-desc">13 units over 60 days &times; $45/day carry cost + 4 wholesale &times; $1,200 avg loss.</div></div><div class="dept-amt">$19,400</div></div>
-    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Phone Answer Gap</div><div class="dept-desc">576 missed calls &times; 40% sales-relevant &times; appt &times; show &times; close &times; gross.</div></div><div class="dept-amt">$17,100</div></div>
-    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Lead Response Delay</div><div class="dept-desc">600 leads &times; conversion decay at 45-min response &times; show &times; close &times; gross.</div></div><div class="dept-amt">$13,700</div></div>
-    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Contact Rate Gap</div><div class="dept-desc">Moving from 45% to 60% contact rate &times; appointment funnel &times; avg total gross.</div></div><div class="dept-amt">$13,400</div></div>
-    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Deal Flow Friction</div><div class="dept-desc">F&amp;I wait time + excessive pencils + poor handoffs + customer walkouts.</div></div><div class="dept-amt">$12,000</div></div>
-    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">F&amp;I Intelligence Non-Adoption</div><div class="dept-desc">26 manually structured deals/mo &times; $300 conservative per-deal lift.</div></div><div class="dept-amt">$7,800</div></div>
-    <div class="dept reveal"><div style="flex:1;min-width:200px"><div class="dept-name">Orphan Leads</div><div class="dept-desc">67% annual turnover &times; 40 abandoned leads per departure &times; conversion &times; gross.</div></div><div class="dept-amt">$7,500</div></div>
-  </div>
-
-  <div class="dept-total reveal">
-    <div class="dept-total-n">$175,000 &ndash; $200,000 / month</div>
-    <div class="dept-total-sub">Top 10 of 38 formulas &mdash; 130-unit baseline store</div>
-    <div class="dept-total-note">Scales with volume: 80 units = $85&ndash;110K/mo &middot; 250+ units = $280&ndash;400K/mo. Every formula shown. Every number defensible.</div>
-  </div>
-</div></section>
-
-<!-- ══════════ BRIEFING ══════════ -->
-
-<section class="dsec" id="briefing"><div class="w">
-  <div class="sl reveal">THE 7 AM GAME CHANGER</div>
-  <h2 class="reveal">Monday Morning Without CoreAI: 90 Minutes Across 8 Systems.<br>With CoreAI: 90 Seconds on Your Phone.</h2>
-  <p class="sp reveal" style="margin-bottom:40px">Every manager gets a prioritized action list ranked by dollar impact. No guessing. No digging. No meetings to figure out yesterday.</p>
-
-  <div class="brief-mock reveal">
-    <div class="brief-head">
-      <span class="brief-label">CoreAI Morning Briefing</span>
-      <span class="brief-time">Mon 7:01 AM</span>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <svg width="36" height="36"><use href="#do-logo"/></svg>
+      <span>Dealer Optima</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#results">What You Get</a>
+      <a href="#operator">About</a>
+      <a href="#faq">FAQ</a>
     </div>
-    <div class="brief-alert">
-      <div class="brief-dot urgent"></div>
-      <div>
-        <div class="brief-text"><strong>3 deals from Saturday missing F&amp;I products.</strong> Menu not presented on 2. Compliance gap on 1.</div>
-        <span class="brief-amt">$2,850 in missed PVR</span>
+    <div class="nav-cta">
+      <a href="#cta" class="btn btn-primary btn-sm btn-arrow">Book a Call</a>
+      <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-logo">
+      <svg width="240" height="90" viewBox="0 0 240 90">
+        <g transform="translate(30, 5)">
+          <polygon points="40,6 69.4,23 69.4,57 40,74 10.6,57 10.6,23" fill="none" stroke="#B8DFD0" stroke-width="1.5" stroke-linejoin="round" opacity="0.45"/>
+          <polygon points="40,16 60.8,28 60.8,52 40,64 19.2,52 19.2,28" fill="none" stroke="#B8DFD0" stroke-width="1" stroke-linejoin="round" opacity="0.25"/>
+          <line x1="40" y1="40" x2="40" y2="6" stroke="#3AAFA9" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="40" y1="40" x2="69.4" y2="23" stroke="#3AAFA9" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="40" y1="40" x2="69.4" y2="57" stroke="#3AAFA9" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="40" y1="40" x2="40" y2="74" stroke="#3AAFA9" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="40" y1="40" x2="10.6" y2="57" stroke="#3AAFA9" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="40" y1="40" x2="10.6" y2="23" stroke="#3AAFA9" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="40" cy="6" r="4" fill="#0C7C59"/>
+          <circle cx="69.4" cy="23" r="4" fill="#0C7C59"/>
+          <circle cx="69.4" cy="57" r="4" fill="#0C7C59"/>
+          <circle cx="40" cy="74" r="4" fill="#0C7C59"/>
+          <circle cx="10.6" cy="57" r="4" fill="#0C7C59"/>
+          <circle cx="10.6" cy="23" r="4" fill="#0C7C59"/>
+          <circle cx="54.7" cy="14.5" r="2.5" fill="#3AAFA9" opacity="0.5"/>
+          <circle cx="69.4" cy="40" r="2.5" fill="#3AAFA9" opacity="0.5"/>
+          <circle cx="54.7" cy="65.5" r="2.5" fill="#3AAFA9" opacity="0.5"/>
+          <circle cx="25.3" cy="65.5" r="2.5" fill="#3AAFA9" opacity="0.5"/>
+          <circle cx="10.6" cy="40" r="2.5" fill="#3AAFA9" opacity="0.5"/>
+          <circle cx="25.3" cy="14.5" r="2.5" fill="#3AAFA9" opacity="0.5"/>
+          <circle cx="40" cy="40" r="10" fill="#0C7C59"/>
+          <circle cx="40" cy="40" r="5.5" fill="#3AAFA9"/>
+          <circle cx="40" cy="40" r="2.5" fill="#fff" opacity="0.9"/>
+        </g>
+        <text x="120" y="42" font-family="'DM Sans', sans-serif" font-weight="700" font-size="22" fill="#0F1114" letter-spacing="-0.5">Dealer</text>
+        <text x="120" y="68" font-family="'DM Sans', sans-serif" font-weight="700" font-size="22" fill="#0F1114" letter-spacing="-0.5">Optima</text>
+      </svg>
+    </div>
+    <div class="hero-badge">
+      🛡️ Certified AI Builder &bull; Installer &bull; Manager
+    </div>
+    <h1>The AI car guy your<br>dealership <em>actually needs</em></h1>
+    <p class="hero-sub">I build, install, and manage complete AI systems for automotive dealerships. 15 years in the trenches. Certified across the full AI stack. My tools or yours — I make the whole operation intelligent.</p>
+    <div class="hero-ctas">
+      <a href="#cta" class="btn btn-primary btn-arrow">Schedule Your AI Assessment</a>
+      <a href="#services" class="btn btn-outline">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CREDENTIALS ═══════════════ -->
+
+<div class="credential-strip">
+  <div class="credential-inner">
+    <div class="credential">
+      <div class="credential-icon green">🔧</div>
+      <span><strong>15+</strong> Years in Dealerships</span>
+    </div>
+    <div class="credential">
+      <div class="credential-icon green">🏢</div>
+      <span><strong>7</strong> Franchise Brands</span>
+    </div>
+    <div class="credential">
+      <div class="credential-icon green">🤖</div>
+      <span><strong>AI Certified</strong> Builder, Installer &amp; Manager</span>
+    </div>
+    <div class="credential">
+      <div class="credential-icon green">🔗</div>
+      <span><strong>Every Dept</strong> Service to F&I to GSM</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ THE PROBLEM ═══════════════ -->
+
+<section class="section" id="problem">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">The Problem Nobody Sees</div>
+      <h2>Your store isn't broken.<br>That's why it's dangerous.</h2>
+      <p class="section-subtitle">The most expensive problem in a dealership is Controlled Decline — dozens of small losses across departments that add up to six figures a month. And it looks like doing okay.</p>
+    </div>
+    <div class="problem-grid reveal">
+      <div class="problem-card bad">
+        <div class="problem-card-label">Without an AI Strategy</div>
+        <h3>Every department running blind.</h3>
+        <p>Your managers are good. But no single person can monitor every system, connect every department, and spot every dollar leak every day. The gaps are invisible because nobody has time to look across all of them at once.</p>
+        <ul>
+          <li>Front gross drifting down — nobody notices the trend</li>
+          <li>Aged units quietly piling up holding costs</li>
+          <li>Lead response too slow — money gone before you know it</li>
+          <li>F&I inconsistency between managers adding up monthly</li>
+          <li>Disconnected tools that don't talk to each other</li>
+        </ul>
+      </div>
+      <div class="problem-card good">
+        <div class="problem-card-label">With the Right AI Partner</div>
+        <h3>Every dollar visible. Every morning.</h3>
+        <p>When someone who's worked every chair builds your AI strategy, the system sees what humans miss. Cross-department patterns. Dollar amounts on every gap. Prioritized action plans before your first cup of coffee.</p>
+        <ul>
+          <li>Every operational gap has a dollar amount attached</li>
+          <li>Action plans routed to the right manager automatically</li>
+          <li>Your existing tools connected and working together</li>
+          <li>Intelligence that learns your store and gets smarter daily</li>
+          <li>One person accountable for the entire AI ecosystem</li>
+        </ul>
       </div>
     </div>
-    <div class="brief-alert">
-      <div class="brief-dot action"></div>
-      <div>
-        <div class="brief-text"><strong>14 units hit 45-day age threshold.</strong> 6 priced above market. Recommended repricing attached.</div>
-        <span class="brief-amt">$4,200/mo carrying cost at risk</span>
+  </div>
+</section>
+
+<!-- ═══════════════ SERVICES ═══════════════ -->
+
+<section class="section section-alt" id="services">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">What I Do</div>
+      <h2>Build. Install. Manage.</h2>
+      <p class="section-subtitle">I design and deploy complete AI ecosystems for dealerships — using proprietary tools, best-in-class vendors, or both. Whatever gets results.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-icon build">🏗️</div>
+        <h3>AI Strategy &amp; Build</h3>
+        <p>Full AI assessment of your operation. I audit every department, identify the gaps nobody's connecting, and architect an AI stack custom-built for your store. Not a template. Your operation.</p>
+        <div class="service-tag">Custom-Built for Your Store</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon install">⚡</div>
+        <h3>Installation &amp; Integration</h3>
+        <p>I deploy AI into your dealership and connect it to every system you already run — DMS, CRM, phones, website, service, inventory. Nothing gets replaced. Everything gets smarter.</p>
+        <div class="service-tag">Integrates With Everything</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon manage">📊</div>
+        <h3>Ongoing Management</h3>
+        <p>I don't install and disappear. Daily monitoring, optimization, and evolution. Your AI learns your store's specific patterns and compounds results month over month. I manage it all.</p>
+        <div class="service-tag">Intelligence That Compounds</div>
       </div>
     </div>
-    <div class="brief-alert">
-      <div class="brief-dot insight"></div>
-      <div>
-        <div class="brief-text"><strong>Service-to-sales conversion dropped 40%.</strong> Equity notifications not reaching the sales floor. Process gap identified.</div>
-        <span class="brief-amt">$18,000/mo opportunity</span>
+  </div>
+</section>
+
+<!-- ═══════════════ WHAT YOU GET ═══════════════ -->
+
+<section class="section" id="results">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">What You Get</div>
+      <h2>A private AI brain built<br>around <em>your</em> operation</h2>
+      <p class="section-subtitle" style="margin-top:16px;">Every department connected. Every dollar visible. Every day smarter. Your managers get a prioritized game plan before they walk through the door.</p>
+    </div>
+    <div class="results-grid reveal">
+      <div class="results-features">
+        <div class="results-feature">
+          <div class="rf-marker">🧠</div>
+          <div class="rf-text">
+            <h4>Morning Intelligence Briefings</h4>
+            <p>Every manager gets a personalized briefing on their phone at 7AM. What happened, what it cost, and exactly what to do about it. Relevant to their role. Under 90 seconds to read.</p>
+          </div>
+        </div>
+        <div class="results-feature">
+          <div class="rf-marker">📋</div>
+          <div class="rf-text">
+            <h4>Prioritized Action Lists</h4>
+            <p>Role-specific daily action lists ranked by dollar impact. Each item tells the manager who to act on, why it matters, and how much it's worth. No guesswork.</p>
+          </div>
+        </div>
+        <div class="results-feature">
+          <div class="rf-marker">⚙️</div>
+          <div class="rf-text">
+            <h4>AI That Works Around the Clock</h4>
+            <p>Agents that respond to leads fast, pre-structure deals, confirm appointments, flag opportunities, and surface patterns — all under human governance. They work while your team sleeps.</p>
+          </div>
+        </div>
+        <div class="results-feature">
+          <div class="rf-marker">🔗</div>
+          <div class="rf-text">
+            <h4>Every Tool Connected</h4>
+            <p>Your DMS, CRM, phones, website, service lane — I connect them all. Each tool gets context from the others, so your whole operation works as one intelligent system instead of a dozen silos.</p>
+          </div>
+        </div>
+        <div class="results-feature">
+          <div class="rf-marker">🛡️</div>
+          <div class="rf-text">
+            <h4>Your Data Stays Yours</h4>
+            <p>Data never leaves your building. Period. No cloud dependencies. No third-party data harvesting. More secure than every vendor tool you currently use.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <div class="callout reveal" style="background:rgba(0,232,198,0.06);border-left-color:#00E8C6;color:#C0CCDB;margin-top:24px">
-    <strong style="color:#F0F4F8">Every finding has a dollar amount.</strong> Every action item is ranked by financial impact. Your GM knows exactly what to fix first&nbsp;&mdash; before they walk through the door.
-  </div>
-</div></section>
-
-<!-- ══════════ WHAT IT REPLACES ══════════ -->
-
-<section class="dsec" style="border-top:1px solid rgba(255,255,255,0.06)"><div class="w">
-  <div class="sl reveal">SAVE MONEY. GET MORE.</div>
-  <h2 class="reveal">Replace Point Solutions. Keep Everything Else.</h2>
-  <p class="sp reveal" style="margin-bottom:32px">CoreAI doesn't replace your DMS, CRM, or phone system. It replaces the <strong>expensive point solutions</strong> bolted on top of them.</p>
-
-  <div style="display:grid;gap:8px" class="reveal">
-    <div class="disp-row"><span class="disp-from">AutoAlert / equity mining</span><span class="disp-cost">$800&ndash;2,000/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
-    <div class="disp-row"><span class="disp-from">Reputation.com / reviews</span><span class="disp-cost">$300&ndash;1,000/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
-    <div class="disp-row"><span class="disp-from">Car Wars / call tracking</span><span class="disp-cost">$300&ndash;1,000/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
-    <div class="disp-row"><span class="disp-from">vAuto (pricing portion)</span><span class="disp-cost">$1,200&ndash;2,500/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
-    <div class="disp-row"><span class="disp-from">JM&amp;A / F&amp;I performance</span><span class="disp-cost">$1,500&ndash;3,000/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
-    <div class="disp-row"><span class="disp-from">Compliance add-ons</span><span class="disp-cost">$200&ndash;800/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
-    <div class="disp-row"><span class="disp-from">BDC outsourcing</span><span class="disp-cost">$3,000&ndash;8,000/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to">Included in CoreAI</span></div>
-    <div class="disp-row" style="background:rgba(0,232,198,0.08);border-color:rgba(0,232,198,0.2)"><span class="disp-from" style="color:#F0F4F8;font-weight:800">Total displaced</span><span class="disp-cost" style="color:#FF5C72;font-size:16px">$7,300&ndash;18,300/mo</span><span class="disp-arrow">&rarr;</span><span class="disp-to" style="font-size:15px">All included in CoreAI</span></div>
-  </div>
-</div></section>
-
-<!-- ══════════ HOW IT WORKS ══════════ -->
-
-<section class="sec" id="how"><div class="w">
-  <div class="sl reveal">INTELLIGENCE THAT COMPOUNDS</div>
-  <h2 class="reveal">The System Earns Your Trust</h2>
-  <p class="sp reveal">CoreAI starts quiet and gets smarter. It never overwhelms your team.</p>
-
-  <div class="steps">
-    <div class="step reveal">
-      <div class="step-num">01</div>
-      <h3>Install Day</h3>
-      <p>4-hour setup. Connected to your existing systems. Your team changes nothing.</p>
-    </div>
-    <div class="step reveal reveal-d1">
-      <div class="step-num">02</div>
-      <h3>Week 2</h3>
-      <p>First briefings. Top 3 findings by dollar impact. Real numbers, not guesses.</p>
-    </div>
-    <div class="step reveal reveal-d2">
-      <div class="step-num">03</div>
-      <h3>Month 1&ndash;2</h3>
-      <p>Expanding intelligence. Deeper patterns. Your managers teach the system what matters at YOUR store.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">04</div>
-      <h3>Month 3+</h3>
-      <p>Full capability. Predictions calibrated. Store-specific benchmarks. Month-end is never a surprise.</p>
-    </div>
-  </div>
-
-  <!-- Golden Rule -->
-
-  <div class="golden-box reveal" style="margin-top:48px">
-    <h2>Integrates with <span>Everything.</span><br>Replaces <span>Nothing.</span></h2>
-    <p style="margin-top:12px">Keep your DMS. Keep your CRM. Keep your phone system, your website, your chat tool. CoreAI is the brain, not the body. It makes everything you already have intelligent.</p>
-  </div>
-</div></section>
-
-<!-- ══════════ SECURITY ══════════ -->
-
-<section class="sec"><div class="w">
-  <div class="sl reveal" style="text-align:center">YOUR DATA</div>
-  <h2 class="reveal" style="text-align:center">Your Data. Your Building. Your&nbsp;Brain.</h2>
-  <p class="sp reveal" style="text-align:center;max-width:520px;margin:0 auto">CoreAI was designed from day one around a simple principle: your data never leaves your dealership.</p>
-
-  <div class="sec-grid">
-    <div class="sec-card reveal">
-      <span class="ico">&#128274;</span>
-      <h4>Private Processing</h4>
-      <p>All intelligence runs inside your building. No cloud dependency. No external servers processing your deals.</p>
-    </div>
-    <div class="sec-card reveal reveal-d1">
-      <span class="ico">&#128737;</span>
-      <h4>No Data Leaves</h4>
-      <p>Customer data, deal data, financial data&nbsp;&mdash; stays in your building. More secure than every cloud tool you use today.</p>
-    </div>
-    <div class="sec-card reveal reveal-d2">
-      <span class="ico">&#129504;</span>
-      <h4>Your Intelligence Stays</h4>
-      <p>Everything CoreAI learns about your store stays in your store's brain. It is YOUR competitive advantage. Nobody else sees it.</p>
-    </div>
-  </div>
-</div></section>
-
-<!-- ══════════ FOUNDER ══════════ -->
-
-<section class="sec" id="founder"><div class="w">
-  <div class="founder-grid">
-    <div class="reveal">
-      <div class="sl">THE FOUNDER</div>
-      <div class="fq">Built by someone who <em>sat in every chair.</em></div>
-      <p class="sp">Chris Hall didn't study dealerships from the outside. He ran them. 15+ years across seven franchise brands&nbsp;&mdash; from writing service tickets to managing the P&amp;L.</p>
-      <p class="sp" style="margin-top:12px"><em style="color:var(--accent)">This was not built by engineers guessing what dealers need. It was built by someone who lived it.</em></p>
-    </div>
-    <div class="reveal reveal-d1">
-      <div class="roles-grid">
-        <div class="role-tag"><div class="role-name">Service Advisor</div><div class="role-detail">Nissan</div></div>
-        <div class="role-tag"><div class="role-name">Internet Sales</div><div class="role-detail">Nissan</div></div>
-        <div class="role-tag"><div class="role-name">F&amp;I Manager</div><div class="role-detail">Nissan, CDJR</div></div>
-        <div class="role-tag"><div class="role-name">Sales Manager</div><div class="role-detail">Honda, Hyundai, Mercedes</div></div>
-        <div class="role-tag"><div class="role-name">GSM</div><div class="role-detail">Ford, Crossroads Auto Group</div></div>
-        <div class="role-tag"><div class="role-name">Director of F&amp;I</div><div class="role-detail">CDJR</div></div>
-        <div class="role-tag" style="grid-column:span 2">
-          <div class="role-name">7 Franchise Brands</div>
-          <div class="role-detail">Honda &middot; Mercedes-Benz &middot; Hyundai &middot; Lincoln &middot; Ford &middot; CDJR &middot; Nissan</div>
+      <div>
+        <div class="briefing-mock">
+          <div class="briefing-header">
+            <div class="briefing-header-left">
+              <svg width="22" height="22" style="opacity:0.9"><use href="#do-logo"/></svg>
+              <span>Morning Briefing</span>
+            </div>
+            <small>Monday 7:01 AM</small>
+          </div>
+          <div class="briefing-body">
+            <div class="briefing-score">
+              <div class="score-circle">74</div>
+              <div class="score-meta">
+                <strong>Overall Store Health</strong>
+                2 departments need attention this week.
+              </div>
+            </div>
+            <div class="briefing-item">
+              <div class="briefing-item-text"><strong>Top priority identified</strong> — Inconsistency between managers is widening. Coaching opportunity flagged with dollar impact.</div>
+              <div class="briefing-dollar loss">$$,$$$/mo</div>
+            </div>
+            <div class="briefing-item">
+              <div class="briefing-item-text"><strong>Inventory action needed</strong> — Units approaching critical age threshold. Holding costs accelerating daily.</div>
+              <div class="briefing-dollar loss">$$,$$$/mo</div>
+            </div>
+            <div class="briefing-item">
+              <div class="briefing-item-text"><strong>Win: response time improving</strong> — Team responded to last week's coaching. Conversion trending up.</div>
+              <div class="briefing-dollar gain">+$$,$$$/mo</div>
+            </div>
+            <div class="briefing-item">
+              <div class="briefing-item-text"><strong>Your action list is ready</strong> — Prioritized by dollar impact, specific to your role.</div>
+              <div class="briefing-dollar" style="color:var(--accent);">View →</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div></section>
+</section>
 
-<!-- ══════════ CTA ══════════ -->
+<!-- ═══════════════ THE OPERATOR ═══════════════ -->
 
-<section class="cta-sec" id="cta"><div class="w">
-  <div class="sl reveal">FOUNDING PARTNERS</div>
-  <h2 class="reveal">10 Stores. Locked Rate. Forever.</h2>
-  <div class="cta-urg reveal">Our first 10 founding partners lock in 50% off &mdash; permanently. Not a promo. A partnership.</div>
-  <a href="mailto:chris@dealeroptima.com" class="btn reveal" style="font-size:16px;padding:15px 40px">Request a Conversation &rarr;</a>
-  <p style="font-size:13px;color:var(--t4);margin-top:16px" class="reveal">chris@dealeroptima.com &middot; Founding Partner spots are limited.</p>
-</div></section>
-
-<!-- ══════════ FOOTER ══════════ -->
-
-<footer><div class="w">
-  <div class="fbot">
-    <span style="font-family:Syne,sans-serif;font-weight:800;letter-spacing:1px">DEALER OPTIMA</span>
-    <span style="font-style:italic">Intelligence That Compounds.</span>
-    <span>&copy; 2026 Dealer Optima. All rights reserved.</span>
+<section class="section section-alt" id="operator">
+  <div class="container">
+    <div class="operator-layout reveal">
+      <div>
+        <div class="section-label">Why Me</div>
+        <h2>I didn't study dealerships.<br>I <em>ran</em> them.</h2>
+        <p class="section-subtitle" style="margin-top:16px;">Most AI companies send engineers who've never sat in the chair. I've held every revenue-generating role across seven franchise brands. I know where the money hides because I've worked in every department where it leaks.</p>
+        <p class="section-subtitle" style="margin-top:12px;">Then I got AI certified — Builder, Installer, Manager — so I could build the system I wished someone had given me when I was running stores.</p>
+        <div class="operator-stats">
+          <div class="op-stat">
+            <div class="op-stat-number">15+</div>
+            <div class="op-stat-label">Years in Dealerships</div>
+          </div>
+          <div class="op-stat">
+            <div class="op-stat-number">7</div>
+            <div class="op-stat-label">Franchise Brands</div>
+          </div>
+          <div class="op-stat">
+            <div class="op-stat-number">6</div>
+            <div class="op-stat-label">Department Roles Held</div>
+          </div>
+          <div class="op-stat">
+            <div class="op-stat-number">3</div>
+            <div class="op-stat-label">AI Certifications</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-role">Service Advisor → Internet Sales → F&I</div>
+            <div class="timeline-detail">Learned where customers enter and where money leaks</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-role">Executive Sales Manager</div>
+            <div class="timeline-detail">Honda &amp; Mercedes-Benz — Volume and luxury, two different games</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-role">General Sales Manager</div>
+            <div class="timeline-detail">Multi-brand group — Saw the cross-department gaps nobody connects</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-role">Director of Finance &amp; GSM</div>
+            <div class="timeline-detail">F&I from the operator's chair, not a vendor's pitch</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-role">AI Certified: Builder, Installer, Manager</div>
+            <div class="timeline-detail">The bridge between 15 years of ops and the AI stack</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-role">Founder, Dealer Optima</div>
+            <div class="timeline-detail">Building the tool I wished someone had given me</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div></footer>
+</section>
+
+<!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+
+<section class="section" id="process">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">How It Works</div>
+      <h2>AI that earns trust<br>before it acts</h2>
+      <p class="section-subtitle">No AI should run loose in a dealership without someone who's sat in every chair. I build it right, deploy it carefully, and manage it personally.</p>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Assess</h3>
+        <p>Full AI audit of your operation. Every department. Every system. I find the gaps and calculate what they're costing you.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Build</h3>
+        <p>Custom AI strategy for your store. Proprietary tools, your existing vendors, or a hybrid. Nothing replaced — everything elevated.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Deploy</h3>
+        <p>Installed on your timeline. Results start in weeks, not months. The system observes first, then earns trust before it acts.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h3>Compound</h3>
+        <p>Month 1 is good. Month 6 is transformative. The intelligence learns your store and gets dramatically smarter over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">Questions</div>
+      <h2>What dealers ask</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">We already have AI tools. Why do we need you?</button>
+        <div class="faq-a"><div class="faq-a-inner">You probably have several. The problem is they don't talk to each other. I connect your existing tools, fill the gaps, and build the cross-department intelligence layer that makes all of them work together. I integrate with everything — I replace nothing.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">We tried AI before and it didn't work.</button>
+        <div class="faq-a"><div class="faq-a-inner">Most AI for dealerships is built by engineers who've never worked in one. It's generic. I've held every role from service advisor to GSM. I know what matters in each department, what the real problems look like, and how managers actually work. That's why it sticks.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What about data security?</button>
+        <div class="faq-a"><div class="faq-a-inner">Your data never leaves your building. I build systems that run privately, on your infrastructure. No cloud dependencies. No third-party data harvesting. I take this seriously because I know what a dealer's data is worth.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long until we see results?</button>
+        <div class="faq-a"><div class="faq-a-inner">Some tools work from day one. First intelligence briefings arrive within weeks. Full cross-department intelligence builds over 60 to 90 days. The system earns trust before it acts — that's by design, not a limitation.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you only use your own tools, or can you work with ours?</button>
+        <div class="faq-a"><div class="faq-a-inner">Both. I have proprietary technology built specifically for dealerships, but I'm certified across the full AI stack. If your store needs a custom integration, a third-party tool configured right, or a hybrid approach — I design and deploy whatever gets the best result.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What makes you different from other AI vendors?</button>
+        <div class="faq-a"><div class="faq-a-inner">I'm not a vendor. I'm an operator who got certified in AI. I've sat in the service drive, the sales desk, the F&I office, and the GSM chair. Most AI companies send a salesperson and a support ticket. I show up, build it, connect it, and manage it personally — because I know what it takes to actually run a store.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+
+<section class="cta-section" id="cta">
+  <div class="cta-card reveal">
+    <h2>Let's find what's hiding<br>in your operation.</h2>
+    <p>15 minutes. I'll walk through how I assess a dealership, what the typical gaps look like at your volume, and whether AI implementation makes sense for your store right now. No pitch. Just a conversation between car guys.</p>
+    <a href="mailto:chris@dealeroptima.com" class="btn btn-primary btn-arrow">Schedule Your Assessment</a>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="logo" style="font-size:15px;">
+      <svg width="28" height="28"><use href="#do-logo"/></svg>
+      <span>Dealer Optima</span>
+    </a>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#results">What You Get</a>
+      <a href="#operator">About</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Dealer Optima. All rights reserved.</div>
+  </div>
+</footer>
 
 <script>
-// Scroll reveal
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// Nav shadow on scroll
-window.addEventListener('scroll', () => {
-  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 20);
-});
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
 </script>
 
 </body>
