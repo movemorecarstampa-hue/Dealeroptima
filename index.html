@@ -393,7 +393,7 @@ flex-wrap: wrap; gap: 16px;
 .footer-links a:hover { color: var(–text); }
 .footer-copy { font-size: 13px; color: var(–text-tertiary); }
 
-/* ═══ ANIMATIONS ═══ */
+/* ═══ ANIMATIONS — BULLETPROOF: content always visible ═══ */
 @keyframes fadeUp {
 from { opacity: 0; transform: translateY(28px); }
 to { opacity: 1; transform: translateY(0); }
@@ -410,47 +410,61 @@ to { opacity: 1; }
 0%, 100% { transform: scale(1); opacity: 0.9; }
 50% { transform: scale(1.08); opacity: 1; }
 }
-@keyframes slideInLeft {
-from { opacity: 0; transform: translateX(-30px); }
+@keyframes slideRight {
+from { opacity: 0; transform: translateX(40px); }
 to { opacity: 1; transform: translateX(0); }
 }
-@keyframes slideInRight {
-from { opacity: 0; transform: translateX(30px); }
-to { opacity: 1; transform: translateX(0); }
+@keyframes scaleUp {
+from { opacity: 0; transform: scale(0.95) translateY(20px); }
+to { opacity: 1; transform: scale(1) translateY(0); }
 }
-@keyframes scaleIn {
-from { opacity: 0; transform: scale(0.92); }
-to { opacity: 1; transform: scale(1); }
+@keyframes countFade {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
 }
 
-/* Hero floating logo */
+/* Hero animations — play on page load */
 .hero-logo svg { animation: float 5s ease-in-out infinite; }
-.hero-logo svg circle:last-child { animation: gentlePulse 3s ease-in-out infinite; }
+.hero-badge { animation: fadeUp 0.7s var(–ease) 0.1s both; }
+.hero h1 { animation: fadeUp 0.7s var(–ease) 0.2s both; }
+.hero-sub { animation: fadeUp 0.7s var(–ease) 0.3s both; }
+.hero-ctas { animation: fadeUp 0.7s var(–ease) 0.4s both; }
 
-/* Reveal system — visible by default, animated if JS loads */
-.reveal { opacity: 1; transform: translateY(0); }
-.reveal.animate {
-opacity: 0; transform: translateY(28px);
-transition: opacity 0.8s var(–ease), transform 0.8s var(–ease);
-}
-.reveal.animate.visible { opacity: 1; transform: translateY(0); }
+/* Scroll-triggered animations — elements start VISIBLE (opacity:1)
+and only animate if JS adds .in-view class */
+.reveal.in-view { animation: fadeUp 0.7s var(–ease) both; }
 
-/* Staggered children — cards, steps, etc. */
-.stagger-children.visible > * {
-animation: fadeUp 0.6s var(–ease) both;
-}
-.stagger-children.visible > *:nth-child(1) { animation-delay: 0s; }
-.stagger-children.visible > *:nth-child(2) { animation-delay: 0.1s; }
-.stagger-children.visible > *:nth-child(3) { animation-delay: 0.2s; }
-.stagger-children.visible > *:nth-child(4) { animation-delay: 0.3s; }
-.stagger-children.visible > *:nth-child(5) { animation-delay: 0.4s; }
-.stagger-children.visible > *:nth-child(6) { animation-delay: 0.5s; }
+/* Staggered grid children */
+.stagger-children.in-view > *:nth-child(1) { animation: fadeUp 0.55s var(–ease) 0.0s both; }
+.stagger-children.in-view > *:nth-child(2) { animation: fadeUp 0.55s var(–ease) 0.1s both; }
+.stagger-children.in-view > *:nth-child(3) { animation: fadeUp 0.55s var(–ease) 0.2s both; }
+.stagger-children.in-view > *:nth-child(4) { animation: fadeUp 0.55s var(–ease) 0.3s both; }
+.stagger-children.in-view > *:nth-child(5) { animation: fadeUp 0.55s var(–ease) 0.4s both; }
+.stagger-children.in-view > *:nth-child(6) { animation: fadeUp 0.55s var(–ease) 0.5s both; }
 
-/* Stagger children hidden before animation */
-.stagger-children.animate > * { opacity: 0; }
+/* Briefing mockup slide-in */
+.reveal.in-view .briefing-mock { animation: slideRight 0.8s var(–ease) 0.2s both; }
+
+/* Timeline items stagger in */
+.reveal.in-view .timeline-item:nth-child(1) { animation: fadeUp 0.5s var(–ease) 0.05s both; }
+.reveal.in-view .timeline-item:nth-child(2) { animation: fadeUp 0.5s var(–ease) 0.12s both; }
+.reveal.in-view .timeline-item:nth-child(3) { animation: fadeUp 0.5s var(–ease) 0.19s both; }
+.reveal.in-view .timeline-item:nth-child(4) { animation: fadeUp 0.5s var(–ease) 0.26s both; }
+.reveal.in-view .timeline-item:nth-child(5) { animation: fadeUp 0.5s var(–ease) 0.33s both; }
+.reveal.in-view .timeline-item:nth-child(6) { animation: fadeUp 0.5s var(–ease) 0.40s both; }
+
+/* CTA card entrance */
+.reveal.in-view .cta-card { animation: scaleUp 0.8s var(–ease) both; }
+
+/* Stat number animation */
+.reveal.in-view .op-stat { animation: fadeUp 0.5s var(–ease) both; }
+.reveal.in-view .op-stat:nth-child(1) { animation-delay: 0s; }
+.reveal.in-view .op-stat:nth-child(2) { animation-delay: 0.1s; }
+.reveal.in-view .op-stat:nth-child(3) { animation-delay: 0.2s; }
+.reveal.in-view .op-stat:nth-child(4) { animation-delay: 0.3s; }
 
 /* Card hover lifts */
-.service-card, .step-card, .problem-card, .op-stat, .faq-item {
+.service-card, .step-card, .problem-card, .op-stat {
 transition: transform 0.35s var(–ease), box-shadow 0.35s var(–ease), border-color 0.35s var(–ease);
 }
 .service-card:hover, .step-card:hover {
@@ -462,67 +476,18 @@ transform: translateY(-2px);
 box-shadow: var(–shadow-md);
 }
 
-/* Briefing mockup slide-in */
-.briefing-mock {
-transition: transform 0.8s var(–ease), opacity 0.8s var(–ease);
-}
-.reveal.animate .briefing-mock {
-opacity: 0; transform: translateX(40px) scale(0.97);
-}
-.reveal.animate.visible .briefing-mock {
-opacity: 1; transform: translateX(0) scale(1);
-}
-
-/* Timeline items stagger */
-.timeline-item {
-transition: opacity 0.5s var(–ease), transform 0.5s var(–ease);
-}
-.reveal.animate .timeline-item { opacity: 0; transform: translateX(20px); }
-.reveal.animate.visible .timeline-item { opacity: 1; transform: translateX(0); }
-.reveal.animate.visible .timeline-item:nth-child(1) { transition-delay: 0.05s; }
-.reveal.animate.visible .timeline-item:nth-child(2) { transition-delay: 0.12s; }
-.reveal.animate.visible .timeline-item:nth-child(3) { transition-delay: 0.19s; }
-.reveal.animate.visible .timeline-item:nth-child(4) { transition-delay: 0.26s; }
-.reveal.animate.visible .timeline-item:nth-child(5) { transition-delay: 0.33s; }
-.reveal.animate.visible .timeline-item:nth-child(6) { transition-delay: 0.40s; }
-
-/* Credential strip subtle entrance */
-.credential {
-transition: opacity 0.5s var(–ease), transform 0.5s var(–ease);
-}
-
-/* Stat number count-up glow */
-.op-stat-number {
-transition: color 0.3s;
-}
-.op-stat:hover .op-stat-number {
-color: var(–accent-deep);
-}
-
 /* Smooth FAQ accordion */
 .faq-a {
 max-height: 0; overflow: hidden;
 transition: max-height 0.4s var(–ease);
 }
 .faq-item.open .faq-a { max-height: 400px; }
-.faq-q {
-transition: color 0.2s, background 0.2s;
-}
+.faq-q { transition: color 0.2s, background 0.2s; }
 .faq-item.open .faq-q { color: var(–accent); }
 .faq-q:hover { background: var(–bg-section); }
 
-/* Button press effect */
+/* Button press */
 .btn:active { transform: translateY(1px) scale(0.98); }
-.btn-primary:active {
-box-shadow: 0 1px 2px rgba(12,124,89,0.2);
-}
-
-/* CTA card entrance */
-.cta-card {
-transition: transform 0.8s var(–ease), opacity 0.8s var(–ease);
-}
-.reveal.animate .cta-card { opacity: 0; transform: scale(0.95) translateY(20px); }
-.reveal.animate.visible .cta-card { opacity: 1; transform: scale(1) translateY(0); }
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 900px) {
@@ -992,18 +957,17 @@ transition: transform 0.8s var(–ease), opacity 0.8s var(–ease);
 </footer>
 
 <script>
-// Nav scroll effect
+// Nav scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
 
-// Reveal system — add .animate class so content is visible if JS fails
+// Scroll-triggered animations — adds .in-view which triggers CSS @keyframes
+// If this JS fails, everything stays visible at opacity:1 (no hiding)
 const reveals = document.querySelectorAll('.reveal');
-reveals.forEach(el => el.classList.add('animate'));
-
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+      entry.target.classList.add('in-view');
       observer.unobserve(entry.target);
     }
   });
@@ -1011,49 +975,39 @@ const observer = new IntersectionObserver((entries) => {
 reveals.forEach(el => observer.observe(el));
 
 // Counting number animation for operator stats
-function animateCount(el, target, suffix = '') {
-  const duration = 1200;
+function animateCount(el, target, suffix) {
+  const duration = 1400;
   const start = performance.now();
-  const isPlus = target.toString().includes('+');
-  const num = parseInt(target);
-
   function tick(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = Math.round(eased * num);
-    el.textContent = current + (isPlus ? '+' : '') + suffix;
-    if (progress < 1) requestAnimationFrame(tick);
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(eased * target) + suffix;
+    if (p < 1) requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
 }
-
-const statObserver = new IntersectionObserver((entries) => {
+const statObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const el = entry.target;
-      const text = el.textContent.trim();
-      const num = parseInt(text);
+      const raw = el.textContent.trim();
+      const num = parseInt(raw);
       if (!isNaN(num)) {
-        const suffix = text.includes('+') ? '+' : '';
+        const suffix = raw.replace(num.toString(), '');
         el.textContent = '0' + suffix;
-        animateCount(el, num, suffix.replace('+',''));
+        setTimeout(() => animateCount(el, num, suffix), 300);
       }
-      statObserver.unobserve(el);
+      statObs.unobserve(el);
     }
   });
 }, { threshold: 0.5 });
+document.querySelectorAll('.op-stat-number').forEach(el => statObs.observe(el));
 
-document.querySelectorAll('.op-stat-number').forEach(el => statObserver.observe(el));
-
-// Smooth scroll for nav links
+// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 });
 </script>
